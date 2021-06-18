@@ -2,6 +2,7 @@ import 'package:dgq/app_bar.dart';
 import 'package:dgq/tracks.dart';
 import 'package:flutter/material.dart';
 import 'globales.dart' as globals;
+import 'background.dart';
 
 void main() {
   globals.appNavigator = GlobalKey<NavigatorState>();
@@ -15,7 +16,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       navigatorKey: globals.appNavigator,
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.red,
       ),
       home: Home(),
     );
@@ -51,22 +52,22 @@ class _HomeState extends State<Home> {
                       color: Colors.white.withOpacity(.1), width: 1)),
             ),
           ),
-          Align(
-            alignment: Alignment.bottomCenter,
-            child: Padding(
-              padding: const EdgeInsets.all(44.0),
-              child: IconButton(
-                  icon: Icon(
-                    Icons.music_note,
-                    color: Colors.white,
-                    size: 44,
-                    semanticLabel: 'listen',
-                  ),
-                  onPressed: () =>
-                      globals.appNavigator.currentState.push(MaterialPageRoute(
-                        builder: (context) =>
-                            Tracks(_width, globals.screenHeight(context)),
-                      ))),
+          InkWell(
+            onTap: () => globals.appNavigator.currentState.push(
+                MaterialPageRoute(
+                    builder: (context) =>
+                        Tracks(_width, globals.screenHeight(context)))),
+            child: Align(
+              alignment: Alignment.bottomCenter,
+              child: Padding(
+                padding: const EdgeInsets.all(44.0),
+                child: Icon(
+                  Icons.music_note,
+                  color: Colors.white,
+                  size: 44,
+                  semanticLabel: 'listen',
+                ),
+              ),
             ),
           ),
         ],

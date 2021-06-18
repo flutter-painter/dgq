@@ -1,5 +1,8 @@
+// inspired from Flutter Animation by Gaurav Tantuway
+
 import 'dart:async';
 import 'package:dgq/app_bar.dart';
+import 'package:dgq/background.dart';
 import 'package:just_audio/just_audio.dart';
 
 import 'globales.dart';
@@ -20,11 +23,14 @@ class _TracksState extends State<Tracks> with TickerProviderStateMixin {
   AnimationController _controller2;
   Animation<double> _animation;
   Animation<double> _animation2;
+  AudioPlayer player;
+  bool _isPaused;
 
   @override
   void initState() {
     super.initState();
-
+    _isPaused = true;
+    player = AudioPlayer();
     _controller2 = AnimationController(
       vsync: this,
       duration: Duration(seconds: 2),
@@ -58,6 +64,16 @@ class _TracksState extends State<Tracks> with TickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButton: _isPaused
+          ? const SizedBox()
+          : FloatingActionButton(
+              child: Icon(Icons.pause),
+              onPressed: () async {
+                // await player.stop();
+                await player.pause();
+                setState(() => _isPaused = true);
+              },
+            ),
       extendBodyBehindAppBar: true,
       appBar: appBar(widget._width),
       body: Stack(
@@ -98,11 +114,8 @@ class _TracksState extends State<Tracks> with TickerProviderStateMixin {
                 '04:31',
                 Icons.music_note,
               ),
-              card(
-                'Monsieur Ba Moussa',
-                '04:15',
-                Icons.music_note,
-              ),
+              card('Monsieur Ba Moussa', '04:15', Icons.music_note,
+                  path: 'assets/Monsieur-Ba-Moussa.mp3'),
               card(
                 'Angelus',
                 '07:34',
@@ -131,28 +144,30 @@ class _TracksState extends State<Tracks> with TickerProviderStateMixin {
   }
 
   Widget card(String title, String subtitle, IconData icon, {String path}) {
-    return Opacity(
-      opacity: _animation.value,
-      child: Transform.translate(
-        offset: Offset(0, _animation2.value),
-        child: Container(
-          height: widget._height / 5.4,
-          padding: EdgeInsets.fromLTRB(
-              widget._width / 20, 0, widget._width / 20, widget._width / 20),
-          child: InkWell(
-            highlightColor: Colors.transparent,
-            splashColor: Colors.transparent,
-            onTap: () async {
-              HapticFeedback.lightImpact();
-              final player = AudioPlayer();
-              var duration =
-                  await player.setUrl('https://youtu.be/xdG3C-QMW8g');
-              player
-                  .play(); // Usually you don't want to wait for playback to finish.
+    return InkWell(
+      onTap: () async {
+        HapticFeedback.lightImpact();
+        try {
+          var duration = await player.setAsset(path);
+          await player.load();
+          player.play();
+        } catch (e) {}
+        // await player.setAudioSource();
+        setState(() {
+          _isPaused = false;
+        });
 
-              //appNavigator.currentState
-              //    .push(MaterialPageRoute(builder: (context) => route));
-            },
+        //appNavigator.currentState
+        //    .push(MaterialPageRoute(builder: (context) => route));
+      },
+      child: Opacity(
+        opacity: _animation.value,
+        child: Transform.translate(
+          offset: Offset(0, _animation2.value),
+          child: Container(
+            height: widget._height / 5.4,
+            padding: EdgeInsets.fromLTRB(
+                widget._width / 20, 0, widget._width / 20, widget._width / 20),
             child: Container(
               decoration: BoxDecoration(
                   color: Colors.white.withOpacity(.2),
@@ -216,28 +231,6 @@ class _TracksState extends State<Tracks> with TickerProviderStateMixin {
               ),
             ),
           ),
-        ),
-      ),
-    );
-  }
-}
-
-class BackgroundColor extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        gradient: LinearGradient(
-          colors: [
-            // Color(0xff146db6),
-            Color(0xffE8B8E0),
-            Color(0xffED92EF),
-            Color(0xffc13808),
-            Color(0xffa50811),
-            Color(0xff750a12),
-          ],
-          begin: Alignment.topRight,
-          end: Alignment.bottomLeft,
         ),
       ),
     );
