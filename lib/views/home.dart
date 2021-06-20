@@ -36,35 +36,17 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
     final _width = globals.screenWidth(context);
     final _height = globals.screenHeight(context);
     return Scaffold(
-      floatingActionButton: Stack(
-        children: [
-          Align(
-              alignment: Alignment.bottomCenter,
-              child: AlbumJacket(AlbumName.BRIC_A_BRAC.toString(), _width)),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 21.0),
-            child: Align(
-                alignment: Alignment.bottomLeft,
-                child: AlbumJacket(AlbumName.MISCELLANEES.toString(), _width)),
-          ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 21.0),
-            child: Align(
-                alignment: Alignment.bottomRight,
-                child: AlbumJacket(AlbumName.PUZZLE.toString(), _width)),
-          ),
-        ],
-      ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       extendBodyBehindAppBar: true,
       appBar: appBar(_width),
       body: Stack(
         children: [
-          BackgroundMain(),
+          // BackgroundMain(),
           Center(
             child: FadeTransition(
               opacity: curve,
               child: Container(
+                width: _width,
+                // height: _height / 2,
                 child: Image.asset('assets/band.jpg'),
                 margin: EdgeInsets.fromLTRB(
                     _width / 20, _width / 20, _width / 20, _width / 20),
@@ -76,6 +58,34 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
                     border: Border.all(
                         color: Colors.white.withOpacity(.3), width: 1)),
               ),
+            ),
+          ),
+          // TODO
+          // revoir les nommer
+          // mettre l'année
+          Positioned(
+            right: _width * 0.1,
+            left: _width * 0.1,
+            bottom: _height * 0.05,
+            child: Row(
+              mainAxisSize: MainAxisSize.max,
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                SizedBox(
+                    width: _width / 5,
+                    height: _height / 5,
+                    child: AlbumJacket(AlbumName.BRIC_A_BRAC.toString())),
+                SizedBox(
+                  width: _width / 5,
+                  height: _height / 5,
+                  child: AlbumJacket(AlbumName.MISCELLANEES.toString()),
+                ),
+                SizedBox(
+                  width: _width / 5,
+                  height: _height / 5,
+                  child: AlbumJacket(AlbumName.PUZZLE.toString()),
+                ),
+              ],
             ),
           ),
         ],

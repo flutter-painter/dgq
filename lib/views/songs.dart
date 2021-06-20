@@ -108,10 +108,15 @@ class _SongsState extends State<Songs> with TickerProviderStateMixin {
         if (path != null && path.isNotEmpty) {
           HapticFeedback.lightImpact();
           try {
+            print("about to set asset");
             var duration = await player.setAsset(path);
+            print("about to load");
             await player.load();
+            print("about to play");
             player.play();
-          } catch (e) {}
+          } catch (e) {
+            print(e);
+          }
           // await player.setAudioSource();
           setState(() {
             _isPaused = false;

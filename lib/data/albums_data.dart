@@ -14,14 +14,13 @@ const List<Song> puzzleSongs = [
   const Song('Ola bijou!', '05:36'),
   const Song('La grande roue', '03:35'),
   const Song('Txapela', '04:31'),
-  const Song('Monsieur Ba Moussa', '04:15',
-      path: 'asets/Monsieur-Ba-Moussa.mp3'),
+  const Song('Monsieur Ba Moussa', '04:15', path: 'Monsieur-Ba-Moussa.mp3'),
   const Song('Angelus', '07:34'),
   const Song('Comme une prière', '04:46'),
   const Song('Il était une fois', '03:44'),
   const Song('Deconfinado', '03:49'),
 ];
 
-const List<Song> miscellaneesSongs = [Song('', '')];
+const List<Song> miscellaneesSongs = [Song('', ''), Song('', ''), Song('', '')];
 
-const List<Song> bricABracSongs = [];
+const List<Song> bricABracSongs = [Song('', ''), Song('', ''), Song('', '')];
