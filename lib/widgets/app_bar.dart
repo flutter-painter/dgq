@@ -1,5 +1,5 @@
-import 'package:dgq/globales.dart';
-import 'package:dgq/tracks.dart';
+import 'package:dgq/globals.dart';
+import 'package:dgq/views/songs.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 

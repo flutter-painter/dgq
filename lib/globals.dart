@@ -11,17 +11,14 @@ double screenHeight(BuildContext context) {
 }
 
 double screenWidth(BuildContext context) {
+  final double _w = MediaQuery.of(context).size.width;
   if (!kIsWeb && Platform.isAndroid || !kIsWeb && Platform.isIOS) {
-    return MediaQuery.of(context).size.width;
+    return _w;
   } else {
-    if (MediaQuery.of(context).size.width > 444) {
-      return 424;
-    } else if (MediaQuery.of(context).size.width > 300) {
-      return 300;
-    } else if (MediaQuery.of(context).size.width > 200) {
-      return 200;
+    if (_w > 500) {
+      return 500;
     } else {
-      return 150;
+      return _w;
     }
   }
 }
