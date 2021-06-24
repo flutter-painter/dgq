@@ -24,3 +24,5 @@ doc/api/
 firebase.json
 web/.firebaserc
 .flutter-plugins-dependencies
+.flutter-plugins
+.gitignore
