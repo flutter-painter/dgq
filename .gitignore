@@ -26,3 +26,4 @@ web/.firebaserc
 .flutter-plugins-dependencies
 .flutter-plugins
 .gitignore
+.DS_Store

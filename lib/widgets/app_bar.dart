@@ -1,5 +1,5 @@
-import 'package:dgq/globals.dart';
-import 'package:dgq/views/songs.dart';
+// import 'package:dgq/globals.dart';
+// import 'package:dgq/views/songs.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -18,6 +18,7 @@ Widget appBar(double width, {String title}) {
             fontSize: width / 17,
             color: Colors.black.withOpacity(.7),
             fontWeight: FontWeight.w400,
+            //fontFamily: 'PT-Sans'
           ),
         ),
         actions: [

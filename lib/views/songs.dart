@@ -11,7 +11,7 @@ import 'package:flutter/services.dart';
 class Songs extends StatefulWidget {
   final double _width;
   final double _height;
-  final String albumName;
+  final AlbumName albumName;
   Songs(this._width, this._height, {this.albumName});
   @override
   _SongsState createState() => _SongsState();
@@ -30,8 +30,8 @@ class _SongsState extends State<Songs> with TickerProviderStateMixin {
   @override
   void initState() {
     super.initState();
-    album = albums
-        .firstWhere((element) => element.name.toString() == widget.albumName);
+    album = albums.firstWhere(
+        (element) => element.name.toString() == widget.albumName.toString());
 
     _isPaused = true;
     player = AudioPlayer();
@@ -82,16 +82,17 @@ class _SongsState extends State<Songs> with TickerProviderStateMixin {
       appBar: appBar(widget._width),
       body: Stack(
         children: [
-          BackgroundColor(),
-          SizedBox(height: widget._height / 9.4),
+          backgroundSongs(context, widget.albumName),
           Scrollbar(
             child: ListView.builder(
+              padding: EdgeInsets.symmetric(vertical: widget._height / 6),
+              shrinkWrap: true,
               physics: BouncingScrollPhysics(
                   parent: AlwaysScrollableScrollPhysics()),
               itemBuilder: (BuildContext context, int index) => songCard(
                   album.songs[index].title,
                   album.songs[index].duration,
-                  album.name.toString(),
+                  album.name,
                   path: album.songs[index].path),
               itemCount: album.songs.length,
             ),
@@ -101,17 +102,17 @@ class _SongsState extends State<Songs> with TickerProviderStateMixin {
     );
   }
 
-  Widget songCard(String title, String subtitle, String albumName,
+  Widget songCard(String title, String subtitle, AlbumName albumName,
       {String path}) {
     return InkWell(
       onTap: () async {
         if (path != null && path.isNotEmpty) {
           HapticFeedback.lightImpact();
           try {
-            print("about to set asset");
-            var duration = await player.setAsset(path);
-            print("about to load");
-            await player.load();
+            // print("about to set asset");
+            // player.setAsset(path);
+            // print("about to load");
+            // player.load();
             print("about to play");
             player.play();
           } catch (e) {
@@ -152,10 +153,11 @@ class _SongsState extends State<Songs> with TickerProviderStateMixin {
                       width: widget._width / 6.5,
                       decoration: BoxDecoration(
                         // shape: BoxShape.rectangle,
-                        color: Colors.white.withOpacity(.2),
+                        // color: Colors.white.withOpacity(.2),
                         borderRadius: BorderRadius.circular(10),
                         image: DecorationImage(
-                            image: AssetImage("assets/$albumName.jpg"),
+                            image: AssetImage(
+                                "assets/${albumName.toCleanString()}.jpg"),
                             fit: BoxFit.scaleDown),
                         //child: Image.asset(
                         //  "assets/$albumName.jpg",
