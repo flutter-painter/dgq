@@ -79,7 +79,7 @@ class _SongsState extends State<Songs> with TickerProviderStateMixin {
               },
             ),
       extendBodyBehindAppBar: true,
-      appBar: appBar(widget._width),
+      appBar: appBar(context, false),
       body: Stack(
         children: [
           backgroundSongs(context, widget.albumName),

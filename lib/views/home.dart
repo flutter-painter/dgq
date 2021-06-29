@@ -1,6 +1,7 @@
 // import 'package:animator/animator.dart';
 // import 'package:dgq/songs.dart';
 // import 'package:dgq/theme/background.dart';
+import 'package:dgq/views/about.dart';
 import 'package:dgq/widgets/album_jacket.dart';
 import 'package:dgq/widgets/app_bar.dart';
 import 'package:dgq/models/album.dart';
@@ -38,7 +39,7 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
     return Scaffold(
       backgroundColor: Colors.white.withOpacity(.5),
       extendBodyBehindAppBar: true,
-      appBar: appBar(_width),
+      appBar: appBar(context, true),
       body: Stack(
         children: [
           Center(
@@ -49,23 +50,27 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   SizedBox(height: _height / 8),
-                  Container(
-                    height: _height / 2,
-                    // width: _width / 1,
-                    child: Image.asset(
-                      'assets/band.jpg',
+                  GestureDetector(
+                    onTap: () => Navigator.of(context).push(
+                        MaterialPageRoute(builder: (context) => AboutView())),
+                    child: Container(
                       // height: _height / 2,
-                      // width: _width / 1.5,
+                      // width: _width / 1,
+                      child: Image.asset(
+                        'assets/band.jpg',
+                        // height: _height / 2,
+                        // width: _width / 1.5,
+                      ),
+                      margin: EdgeInsets.symmetric(
+                          vertical: _height / 50, horizontal: _width / 50),
+                      padding: EdgeInsets.symmetric(
+                          vertical: _height / 50, horizontal: _width / 50),
+                      decoration: BoxDecoration(
+                          color: Colors.grey.withOpacity(.2),
+                          borderRadius: BorderRadius.all(Radius.circular(10)),
+                          border: Border.all(
+                              color: Colors.white.withOpacity(.3), width: 1)),
                     ),
-                    margin: EdgeInsets.symmetric(
-                        vertical: _height / 50, horizontal: _width / 50),
-                    padding: EdgeInsets.symmetric(
-                        vertical: _height / 50, horizontal: _width / 50),
-                    decoration: BoxDecoration(
-                        color: Colors.grey.withOpacity(.2),
-                        borderRadius: BorderRadius.all(Radius.circular(10)),
-                        border: Border.all(
-                            color: Colors.white.withOpacity(.3), width: 1)),
                   ),
                   Expanded(
                     child: Padding(
