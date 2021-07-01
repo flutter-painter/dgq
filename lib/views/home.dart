@@ -50,17 +50,11 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   SizedBox(height: _height / 8),
-                  GestureDetector(
+                  InkWell(
                     onTap: () => Navigator.of(context).push(
                         MaterialPageRoute(builder: (context) => AboutView())),
                     child: Container(
-                      // height: _height / 2,
-                      // width: _width / 1,
-                      child: Image.asset(
-                        'assets/band.jpg',
-                        // height: _height / 2,
-                        // width: _width / 1.5,
-                      ),
+                      child: Image.asset('assets/band.jpg'),
                       margin: EdgeInsets.symmetric(
                           vertical: _height / 50, horizontal: _width / 50),
                       padding: EdgeInsets.symmetric(

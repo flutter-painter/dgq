@@ -13,7 +13,7 @@ Widget appBar(BuildContext context, bool isHome, {String title}) {
         leading: isHome
             ? const SizedBox()
             : IconButton(
-                icon: Icon(Icons.arrow_back_ios, color: Colors.black),
+                icon: Icon(Icons.arrow_back_ios, color: Colors.white),
                 onPressed: () => Navigator.of(context).pop(),
               ),
         brightness: Brightness.light,
@@ -23,7 +23,7 @@ Widget appBar(BuildContext context, bool isHome, {String title}) {
           'Denis Gancel Quartet',
           style: TextStyle(
             fontSize: MediaQuery.of(context).size.width / 17,
-            color: Colors.black.withOpacity(.7),
+            color: isHome ? Colors.black.withOpacity(.7) : Colors.white,
             fontWeight: FontWeight.w400,
             //fontFamily: 'PT-Sans'
           ),
