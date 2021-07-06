@@ -180,7 +180,8 @@ class _SongsState extends State<Songs> with TickerProviderStateMixin {
                           hoverColor: Colors.white,
                           iconSize: 33,
                           padding: EdgeInsets.all(22),
-                          icon: Icon(Icons.play_circle, color: Colors.white),
+                          icon:
+                              Icon(Icons.play_circle_fill, color: Colors.white),
                           onPressed: () async {
                             print('touch');
                             if (path != null && path.isNotEmpty) {
