@@ -79,8 +79,7 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
               ),
             ),
           ),
-          // TODO
-          // revoir les nommer
+          // TODO revoir les nommer
           // mettre l'année
           Positioned(
             right: _width * 0.1,

@@ -15,7 +15,7 @@ const List<Song> puzzleSongs = [
   const Song('La grande roue', '03:35'),
   const Song('Txapela', '04:31'),
   const Song('Monsieur Ba Moussa', '04:15',
-      path: 'assets/Monsieur-Ba-Moussa.mp3'),
+      path: 'assets/audio/Monsieur-Ba-Moussa.mp3'),
   const Song('Angelus', '07:34'),
   const Song('Comme une prière', '04:46'),
   const Song('Il était une fois', '03:44'),

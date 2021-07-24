@@ -1,9 +1,9 @@
+import 'package:assets_audio_player/assets_audio_player.dart';
 import 'package:dgq/data/albums_data.dart';
 import 'package:dgq/models/album.dart';
 import 'package:dgq/widgets/app_bar.dart';
 import 'package:dgq/theme/background.dart';
-import 'package:just_audio/just_audio.dart';
-
+// import 'package:just_audio/just_audio.dart';
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -24,7 +24,6 @@ class _SongsState extends State<Songs> with TickerProviderStateMixin {
   AnimationController _controller2;
   Animation<double> _animation;
   Animation<double> _animation2;
-  AudioPlayer player;
   bool _isPaused;
 
   @override
@@ -34,7 +33,6 @@ class _SongsState extends State<Songs> with TickerProviderStateMixin {
         (element) => element.name.toString() == widget.albumName.toString());
 
     _isPaused = true;
-    player = AudioPlayer();
     _controller2 = AnimationController(
       vsync: this,
       duration: Duration(seconds: 2),
@@ -61,7 +59,6 @@ class _SongsState extends State<Songs> with TickerProviderStateMixin {
   void dispose() {
     _controller.dispose();
     _controller2.dispose();
-    player.dispose();
     super.dispose();
   }
 
@@ -74,9 +71,7 @@ class _SongsState extends State<Songs> with TickerProviderStateMixin {
               backgroundColor: Colors.white,
               child: Icon(Icons.pause, color: Colors.black),
               onPressed: () async {
-                // await player.stop();
-                await player.pause();
-
+                // await player.stop()
                 setState(() => _isPaused = true);
               },
             ),
@@ -132,7 +127,7 @@ class _SongsState extends State<Songs> with TickerProviderStateMixin {
                       borderRadius: BorderRadius.circular(10),
                       image: DecorationImage(
                           image: AssetImage(
-                              "assets/${albumName.toCleanString()}.jpg"),
+                              'assets/${albumName.toCleanString()}.jpg'),
                           fit: BoxFit.scaleDown),
                     ),
                   ),
@@ -187,20 +182,11 @@ class _SongsState extends State<Songs> with TickerProviderStateMixin {
                               print('touch2');
                               HapticFeedback.lightImpact();
                               try {
-                                print("about to set asset");
-                                player.setAsset(path);
-                                print("about to load");
-                                player.load();
-                                print("about to play");
-                                player.play();
+                                final assetsAudioPlayer = AssetsAudioPlayer();
+                                assetsAudioPlayer.open(Audio('$path'));
                               } catch (e) {
                                 print(e);
                               }
-                              final duration = await player.setAudioSource(
-                                  AudioSource.uri(
-                                      Uri(scheme: 'asset', path: '$path')));
-                              print('duration $duration');
-                              player.play();
                               setState(() => _isPaused = false);
                             }
                           },

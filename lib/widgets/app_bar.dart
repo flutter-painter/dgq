@@ -10,12 +10,11 @@ Widget appBar(BuildContext context, bool isHome, {String title}) {
       borderRadius: BorderRadius.vertical(bottom: Radius.circular(20)),
       child: AppBar(
         automaticallyImplyLeading: false,
-        leading: isHome
-            ? const SizedBox()
-            : IconButton(
-                icon: Icon(Icons.arrow_back_ios, color: Colors.white),
-                onPressed: () => Navigator.of(context).pop(),
-              ),
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back_ios,
+              color: isHome ? Colors.black : Colors.white),
+          onPressed: () => Navigator.of(context).pop(),
+        ),
         brightness: Brightness.light,
         backgroundColor: Colors.white.withOpacity(.15),
         elevation: 0,

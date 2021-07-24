@@ -17,7 +17,7 @@ class AlbumJacket extends StatelessWidget {
             Container(
               // decoration:BoxDecoration(color: Colors.grey, shape: BoxShape.rectangle),
               child: Image.asset(
-                "assets/${albumName.toCleanString()}.jpg",
+                'assets/${albumName.toCleanString()}.jpg',
                 semanticLabel: '${albumName.toString()}',
                 width: ctr.maxWidth,
                 height: ctr.maxHeight * 0.7,
