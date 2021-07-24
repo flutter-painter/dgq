@@ -18,29 +18,24 @@ class Songs extends StatefulWidget {
 }
 
 class _SongsState extends State<Songs> with TickerProviderStateMixin {
+  AssetsAudioPlayer assetsAudioPlayer;
   Album album;
-
   AnimationController _controller;
   AnimationController _controller2;
   Animation<double> _animation;
   Animation<double> _animation2;
-  bool _isPaused;
 
   @override
   void initState() {
     super.initState();
+    assetsAudioPlayer = AssetsAudioPlayer();
     album = albums.firstWhere(
         (element) => element.name.toString() == widget.albumName.toString());
 
-    _isPaused = true;
-    _controller2 = AnimationController(
-      vsync: this,
-      duration: Duration(seconds: 2),
-    );
-    _controller = AnimationController(
-      vsync: this,
-      duration: Duration(seconds: 1),
-    );
+    _controller2 =
+        AnimationController(vsync: this, duration: Duration(seconds: 2));
+    _controller =
+        AnimationController(vsync: this, duration: Duration(seconds: 1));
 
     _animation = Tween<double>(begin: 0, end: 1)
         .animate(CurvedAnimation(parent: _controller, curve: Curves.easeOut))
@@ -59,24 +54,15 @@ class _SongsState extends State<Songs> with TickerProviderStateMixin {
   void dispose() {
     _controller.dispose();
     _controller2.dispose();
+    assetsAudioPlayer.dispose();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      floatingActionButton: _isPaused
-          ? const SizedBox()
-          : FloatingActionButton(
-              backgroundColor: Colors.white,
-              child: Icon(Icons.pause, color: Colors.black),
-              onPressed: () async {
-                // await player.stop()
-                setState(() => _isPaused = true);
-              },
-            ),
       extendBodyBehindAppBar: true,
-      appBar: appBar(context, false),
+      appBar: appBar(context, false, isBackWhite: false),
       body: Stack(
         children: [
           backgroundSongs(context, widget.albumName),
@@ -170,28 +156,46 @@ class _SongsState extends State<Songs> with TickerProviderStateMixin {
                   ),
                   path == null || path.isEmpty
                       ? const SizedBox()
-                      : IconButton(
-                          tooltip: 'play',
-                          hoverColor: Colors.white,
-                          iconSize: 33,
-                          padding: EdgeInsets.all(22),
-                          icon:
-                              Icon(Icons.play_circle_fill, color: Colors.white),
-                          onPressed: () async {
-                            print('touch');
-                            if (path != null && path.isNotEmpty) {
-                              print('touch2');
-                              HapticFeedback.lightImpact();
-                              try {
-                                final assetsAudioPlayer = AssetsAudioPlayer();
-                                assetsAudioPlayer.open(Audio('$path'));
-                              } catch (e) {
-                                print(e);
-                              }
-                              setState(() => _isPaused = false);
-                            }
-                          },
-                        ),
+                      : StreamBuilder(
+                          stream: assetsAudioPlayer.isPlaying,
+                          builder: (context, snap) {
+                            return !snap.data
+                                ? IconButton(
+                                    tooltip: 'play',
+                                    hoverColor: Colors.white,
+                                    iconSize: 55,
+                                    padding: EdgeInsets.all(22),
+                                    icon: Icon(Icons.play_circle_fill,
+                                        color: Colors.white),
+                                    onPressed: () async {
+                                      if (path != null && path.isNotEmpty) {
+                                        HapticFeedback.lightImpact();
+                                        try {
+                                          assetsAudioPlayer
+                                              .open(Audio('$path'));
+                                        } catch (e) {
+                                          print(e);
+                                        }
+                                      }
+                                    },
+                                  )
+                                : IconButton(
+                                    tooltip: 'pause',
+                                    hoverColor: Colors.white,
+                                    iconSize: 33,
+                                    padding: EdgeInsets.all(22),
+                                    icon: Icon(Icons.pause_circle_filled,
+                                        color: Colors.white),
+                                    onPressed: () async {
+                                      HapticFeedback.lightImpact();
+                                      try {
+                                        assetsAudioPlayer.pause();
+                                      } catch (e) {
+                                        print(e);
+                                      }
+                                    },
+                                  );
+                          }),
                 ],
               ),
             ),

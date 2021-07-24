@@ -3,49 +3,33 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-Widget appBar(BuildContext context, bool isHome, {String title}) {
+Widget appBar(BuildContext context, bool isHome,
+    {bool isBackWhite, String title}) {
   return PreferredSize(
     preferredSize: Size(double.infinity, kToolbarHeight),
     child: ClipRRect(
       borderRadius: BorderRadius.vertical(bottom: Radius.circular(20)),
       child: AppBar(
         automaticallyImplyLeading: false,
-        leading: IconButton(
-          icon: Icon(Icons.arrow_back_ios,
-              color: isHome ? Colors.black : Colors.white),
-          onPressed: () => Navigator.of(context).pop(),
-        ),
+        leading: isHome
+            ? const SizedBox()
+            : IconButton(
+                icon: Icon(Icons.arrow_back_ios,
+                    color: isBackWhite ? Colors.black : Colors.white),
+                onPressed: () => Navigator.of(context).pop(),
+              ),
         brightness: Brightness.light,
         backgroundColor: Colors.white.withOpacity(.15),
         elevation: 0,
         title: Text(
           'Denis Gancel Quartet',
           style: TextStyle(
-            fontSize: MediaQuery.of(context).size.width / 17,
-            color: isHome ? Colors.black.withOpacity(.7) : Colors.white,
-            fontWeight: FontWeight.w400,
-            //fontFamily: 'PT-Sans'
-          ),
+              fontSize: MediaQuery.of(context).size.width / 33,
+              color: isBackWhite ? Colors.black.withOpacity(.7) : Colors.white,
+              fontWeight: FontWeight.w400,
+              fontFamily: 'PT-Sans'),
         ),
-        actions: [
-          // IconButton(
-          //   tooltip: 'share',
-          //   splashColor: Colors.transparent,
-          //   highlightColor: Colors.transparent,
-          //   icon: Icon(Icons.share, color: Colors.black.withOpacity(.7)),
-          //   onPressed: () {
-          //     HapticFeedback.lightImpact();
-          //     appNavigator.currentState.push(
-          //       MaterialPageRoute(
-          //         builder: (context) {
-          //           return RouteWhereYouGo();
-          //         },
-          //       ),
-          //     );
-          //   },
-          // ),
-          // Text('  '),
-        ],
+        actions: [],
       ),
     ),
   );

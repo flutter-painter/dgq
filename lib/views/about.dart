@@ -14,7 +14,7 @@ class _AboutViewState extends State<AboutView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: appBar(context, false),
+      appBar: appBar(context, false, isBackWhite: true),
       body: Scrollbar(
           child: SingleChildScrollView(
               child: Column(

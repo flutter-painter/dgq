@@ -15,19 +15,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       navigatorKey: globals.appNavigator,
-      theme: ThemeData(
-          // primarySwatch: Colors.red,
-          // applyElevationOverlayColor: false,
-          //unselectedWidgetColor: Colors.black,
-          // canvasColor: Colors.black,
-          // colorScheme: ColorScheme.light(),
-          // buttonColor: Colors.black,
-          // primaryColor: Colors.black,
-          // primaryColorLight: Colors.black,
-          // accentColor: Colors.black,
-          // indicatorColor: Colors.black,
-          // hoverColor: Colors.black,
-          ),
+      theme: ThemeData(),
       home: Home(),
     );
   }
