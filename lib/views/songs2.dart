@@ -84,7 +84,7 @@ class _PlayerState extends State<Player>
         bottom: 12,
         child: Center(
           child: SizedBox(
-            height: 40,
+            height: 80,
             child: TextButton(
               onPressed: () {
                 // TODO add a mainView on top so player available everywhere
@@ -95,7 +95,8 @@ class _PlayerState extends State<Player>
                   ),
                 );
               },
-              child: Text('Musiciens', style: textStyleTitle),
+              child: Text('Denis Gancel Quartet\nLes musiciens',
+                  textAlign: TextAlign.center, style: textStyleTitle),
             ),
           ),
         ),
