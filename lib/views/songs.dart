@@ -1,7 +1,6 @@
 import 'package:dgq/data/albums_data.dart';
 import 'package:dgq/models/album.dart';
 import 'package:dgq/widgets/app_bar.dart';
-import 'package:dgq/theme/background.dart';
 import 'package:just_audio/just_audio.dart';
 
 import 'dart:ui';
@@ -84,7 +83,8 @@ class _SongsState extends State<Songs> with TickerProviderStateMixin {
       appBar: appBar(context, false),
       body: Stack(
         children: [
-          backgroundSongs(context, widget.albumName),
+          // backgroundSon
+          //gs(context, widget.albumName),
           Scrollbar(
             child: ListView.builder(
               padding: EdgeInsets.symmetric(vertical: widget._height / 6),

@@ -22,6 +22,30 @@ const List<Song> puzzleSongs = [
   const Song('Deconfinado', '03:49'),
 ];
 
-const List<Song> miscellaneesSongs = [Song('', ''), Song('', ''), Song('', '')];
+const List<Song> miscellaneesSongs = [
+  Song(' Le Vélo Jaune', ''),
+  Song('L\'Accordeur', ''),
+  Song('Trop Cool L\'océan', ''),
+  Song('Lazy Afternoons Chant feat. Yasmin Shah', ''),
+  Song('Mimich_ Blues', ''),
+  Song('Face', ''),
+  Song('Bataclan', ''),
+  Song('Le Moucharabieh', ''),
+  Song('En Allant Danser', ''),
+  Song('A Flash Back Of You - Yasmin Shah', ''),
+  Song('La Terreur Des Mouches À Gâteaux', ''),
+];
 
-const List<Song> bricABracSongs = [Song('', ''), Song('', ''), Song('', '')];
+const List<Song> bricABracSongs = [
+  Song('Gavotte arrangée', ''),
+  Song('Aguilera', ''),
+  Song('Baroque à souhait', ''),
+  Song('Belharra', ''),
+  Song('Choralito', ''),
+  Song('Gipsy Look', ''),
+  Song('Hegoaldean Bista', ''),
+  Song('Ibaia', ''),
+  Song('Il go', ''),
+  Song('Mr Ba Moussa', ''),
+  Song('Premier argent de poche', ''),
+];

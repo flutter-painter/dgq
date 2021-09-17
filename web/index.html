@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <!--
     If you are serving your web app in a path other than the root, change the
@@ -26,10 +27,12 @@
   <title>dgq</title>
   <link rel="manifest" href="manifest.json">
 </head>
+
 <body>
   <!-- This script installs service_worker.js to provide PWA functionality to
        application. For more information, see:
        https://developers.google.com/web/fundamentals/primers/service-workers -->
+  <script src="main.dart.js?version=2" type="application/javascript"></script>
   <script>
     var serviceWorkerVersion = null;
     var scriptLoaded = false;
@@ -96,12 +99,13 @@
   </script>
   <!-- The core Firebase JS SDK is always required and must be listed first -->
   <script src="/__/firebase/8.6.8/firebase-app.js"></script>
-  
+
   <!-- TODO: Add SDKs for Firebase products that you want to use
        https://firebase.google.com/docs/web/setup#available-libraries -->
   <script src="/__/firebase/8.6.8/firebase-analytics.js"></script>
-  
+
   <!-- Initialize Firebase -->
   <script src="/__/firebase/init.js"></script>
 </body>
+
 </html>

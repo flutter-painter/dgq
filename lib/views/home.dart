@@ -27,6 +27,7 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
       duration: const Duration(seconds: 5),
       vsync: this,
     );
+
     curve = CurvedAnimation(
         parent: controller, curve: Curves.fastLinearToSlowEaseIn);
     controller.forward();
@@ -54,7 +55,7 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
                     onTap: () => Navigator.of(context).push(
                         MaterialPageRoute(builder: (context) => AboutView())),
                     child: Container(
-                      child: Image.asset('assets/band.jpg'),
+                      child: Image.asset('assets/band.png'),
                       margin: EdgeInsets.symmetric(
                           vertical: _height / 50, horizontal: _width / 50),
                       padding: EdgeInsets.symmetric(
