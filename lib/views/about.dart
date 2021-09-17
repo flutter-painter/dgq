@@ -70,7 +70,7 @@ class _AboutViewState extends State<AboutView> {
               padding: const EdgeInsets.all(10),
               sliver: SliverGrid(
                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisSpacing: globals.screenWidth(context) / 40,
+                  crossAxisSpacing: globals.screenWidth(context) / 10,
                   mainAxisSpacing: globals.screenHeight(context) / 40,
                   crossAxisCount: 2,
                 ),

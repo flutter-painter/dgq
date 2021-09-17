@@ -40,7 +40,6 @@ class _PlayerState extends State<Player>
   void dispose() {
     WidgetsBinding.instance?.removeObserver(this);
     _player.dispose();
-
     super.dispose();
   }
 
@@ -88,6 +87,8 @@ class _PlayerState extends State<Player>
             height: 40,
             child: TextButton(
               onPressed: () {
+                // TODO add a mainView on top so player available everywhere
+                _player.stop();
                 globals.appNavigator.currentState.push(
                   MaterialPageRoute(
                     builder: (context) => AboutView(),
