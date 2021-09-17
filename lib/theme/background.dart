@@ -15,9 +15,9 @@ final Animatable<LinearGradient> background = TweenSequence<LinearGradient>([
   TweenSequenceItem(
       tween: LinearGradientTween(
           begin: LinearGradient(
-            begin: Alignment.bottomLeft,
-            end: Alignment.topRight,
-            colors: [Colors.blue[300], Colors.blue[900]],
+            begin: Alignment.topRight,
+            end: Alignment.bottomLeft,
+            colors: [Colors.lightBlue, Colors.blue[800]],
           ),
           end: linear1),
       weight: 1.0),
@@ -34,8 +34,8 @@ final Animatable<LinearGradient> background = TweenSequence<LinearGradient>([
   TweenSequenceItem(
       tween: LinearGradientTween(
           begin: LinearGradient(
-            begin: Alignment.bottomLeft,
-            end: Alignment.topRight,
+            begin: Alignment.bottomCenter,
+            end: Alignment.topCenter,
             colors: [Colors.orange[300], Colors.orange[600]],
           ),
           end: linear1),

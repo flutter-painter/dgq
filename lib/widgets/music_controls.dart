@@ -2,7 +2,6 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:just_audio/just_audio.dart';
 import 'package:rxdart/rxdart.dart';
-import 'package:dgq/models/position_data.dart';
 
 class MusicControls extends StatefulWidget {
   final AudioPlayer player;

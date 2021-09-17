@@ -6,6 +6,12 @@ const textStyleTitle = TextStyle(
   fontWeight: FontWeight.w700,
   fontSize: 22,
 );
+const textStyleTitleBlack = TextStyle(
+  fontFamily: 'Roboto',
+  color: Colors.black,
+  fontWeight: FontWeight.w700,
+  fontSize: 22,
+);
 
 const textStyleAlbum = TextStyle(
   fontFamily: 'Roboto',

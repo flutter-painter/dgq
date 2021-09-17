@@ -11,6 +11,10 @@ double screenHeight(BuildContext context) {
 }
 
 double screenWidth(BuildContext context) {
+  return MediaQuery.of(context).size.height;
+}
+
+double screenWidthSpecial(BuildContext context) {
   final double _w = MediaQuery.of(context).size.width;
   if (!kIsWeb && Platform.isAndroid || !kIsWeb && Platform.isIOS) {
     return _w;

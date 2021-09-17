@@ -28,6 +28,7 @@ dependencies:
   just_audio: ^0.9.11 #^0.7.5
   animator: ^3.1.0
   rxdart: '>=0.26.0 <0.28.0'
+  url_launcher: ^6.0.10
 
 
 dev_dependencies:
@@ -49,12 +50,13 @@ flutter:
   assets:
     - assets/deconfinado.mp3
     - assets/mimich_blues.mp3
-    #- assets/premier_argent_de_poche.mp3
     - assets/gavotte.mp3
-    - assets/band.jpg
+    - assets/band.png
     - assets/bric_a_brac.jpg
     - assets/miscellanees.jpg
     - assets/puzzle.jpg
+    - assets/musicians/
+    - assets/console.png
 
   fonts:
     - family: Roboto

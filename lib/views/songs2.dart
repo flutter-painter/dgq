@@ -4,6 +4,7 @@ import 'package:dgq/constants.dart';
 import 'package:dgq/style.dart';
 import 'package:dgq/models/audio_metadata.dart';
 import 'package:dgq/theme/background.dart';
+import 'package:dgq/views/about.dart';
 import 'package:dgq/widgets/music_controls.dart';
 import 'package:flutter/material.dart';
 import 'package:just_audio/just_audio.dart';
@@ -15,7 +16,8 @@ class Player extends StatefulWidget {
   _PlayerState createState() => _PlayerState();
 }
 
-class _PlayerState extends State<Player> with WidgetsBindingObserver {
+class _PlayerState extends State<Player>
+    with WidgetsBindingObserver, SingleTickerProviderStateMixin {
   AudioPlayer _player;
   final _cardHeight = minCardHeight;
 
@@ -38,6 +40,7 @@ class _PlayerState extends State<Player> with WidgetsBindingObserver {
   void dispose() {
     WidgetsBinding.instance?.removeObserver(this);
     _player.dispose();
+
     super.dispose();
   }
 
@@ -77,6 +80,27 @@ class _PlayerState extends State<Player> with WidgetsBindingObserver {
       ),
     );
   }
+
+  Widget _about() => Positioned(
+        bottom: 12,
+        child: Center(
+          child: SizedBox(
+            height: 40,
+            width: 40,
+            child: IconButton(
+              onPressed: () {
+                globals.appNavigator.currentState.push(
+                  MaterialPageRoute(
+                    builder: (context) => AboutView(),
+                  ),
+                );
+              },
+              icon: Icon(Icons.person),
+              color: Colors.white,
+            ),
+          ),
+        ),
+      );
 
   Widget _buildPlayerCard() {
     return Positioned(
@@ -237,6 +261,7 @@ class _PlayerState extends State<Player> with WidgetsBindingObserver {
         _buildGradientBackground(),
         _buildPlayerCard(),
         _buildPlayerContent(),
+        _about()
       ],
     ));
   }

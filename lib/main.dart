@@ -1,4 +1,3 @@
-import 'package:dgq/views/home.dart';
 import 'package:dgq/views/songs2.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
