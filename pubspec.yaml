@@ -56,14 +56,8 @@ flutter:
     - assets/miscellanees.jpg
     - assets/puzzle.jpg
     - assets/musicians/
-    - assets/console.png
 
   fonts:
-    - family: Roboto
+    - family: Quicksand
       fonts:
-        - asset: assets/fonts/Roboto/Roboto-Light.ttf
-          weight: 300
-        - asset: assets/fonts/Roboto/Roboto-Medium.ttf
-          weight: 500
-        - asset: assets/fonts/Roboto/Roboto-Bold.ttf
-          weight: 700
+        - asset: assets/fonts/Quicksand-Medium.ttf

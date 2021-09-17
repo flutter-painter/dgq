@@ -86,8 +86,7 @@ class _PlayerState extends State<Player>
         child: Center(
           child: SizedBox(
             height: 40,
-            width: 40,
-            child: IconButton(
+            child: TextButton(
               onPressed: () {
                 globals.appNavigator.currentState.push(
                   MaterialPageRoute(
@@ -95,8 +94,7 @@ class _PlayerState extends State<Player>
                   ),
                 );
               },
-              icon: Icon(Icons.person),
-              color: Colors.white,
+              child: Text('Musiciens', style: textStyleTitle),
             ),
           ),
         ),

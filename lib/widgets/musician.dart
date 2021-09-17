@@ -55,14 +55,14 @@ class MusicianWidget extends StatelessWidget {
             child: RichText(
                 text: TextSpan(style: textStyleAlbum, children: [
               TextSpan(
-                text: musician.firstName + ' ' + musician.lastName,
-              ),
+                  text: musician.firstName + ' ' + musician.lastName,
+                  style: TextStyle(fontWeight: FontWeight.w700, fontSize: 22)),
               TextSpan(
                 text: '\n' + musician.instrument,
               ),
               TextSpan(
-                text: musician.isQuartet ? '\n' : '\nGuest Star',
-              ),
+                  text: musician.isQuartet ? '\n' : '\n(Guest Star)',
+                  style: TextStyle(fontStyle: FontStyle.italic, fontSize: 12)),
             ])),
           ),
         ],

@@ -25,34 +25,46 @@ class _AboutViewState extends State<AboutView> {
           controller: controller,
           slivers: <Widget>[
             SliverAppBar(
-                expandedHeight: globals.screenHeight(context) * .15,
-                // collapsedHeight: globals.screenHeight(context) * .1,
+                expandedHeight: globals.screenHeight(context) * .4,
+                collapsedHeight: globals.screenHeight(context) * .12,
                 floating: true,
                 centerTitle: true,
                 pinned: true,
                 snap: true,
                 stretch: true,
+                backgroundColor: Colors.black,
                 automaticallyImplyLeading: false,
-                // backgroundColor: Colors.black,
                 flexibleSpace: Stack(
                   children: <Widget>[
                     Positioned.fill(
                         child: Image.asset(
-                      'assets/console.png',
+                      'assets/band.png',
                       fit: BoxFit.cover,
                     ))
                   ],
                 ),
-                title:
-                    Text('Denis Gancel Quartet & Cie', style: textStyleTitle),
+                title: Text('Denis Gancel Quartet', style: textStyleTitle),
                 actions: [
-                  Center(
-                    child: MouseRegionButton(
-                      'spotify',
-                      onPressed: () => launchInBrowser(
-                          'https://open.spotify.com/artist/6s3HsM7KsqkGJAtqQ6yQUl'),
-                    ),
-                  ),
+                  Row(
+                      mainAxisSize: MainAxisSize.max,
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        MouseRegionButton(
+                          'spotify',
+                          onPressed: () => launchInBrowser(
+                              'https://open.spotify.com/artist/6s3HsM7KsqkGJAtqQ6yQUl'),
+                        ),
+                        MouseRegionButton(
+                          'youtube',
+                          onPressed: () => launchInBrowser(
+                              'https://www.youtube.com/user/denisgancel'),
+                        ),
+                        MouseRegionButton(
+                          'facebook',
+                          onPressed: () => launchInBrowser(
+                              'https://www.facebook.com/denisgancelquartetcie/'),
+                        ),
+                      ]),
                 ]),
             SliverPadding(
               padding: const EdgeInsets.all(10),
