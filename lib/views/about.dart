@@ -45,26 +45,29 @@ class _AboutViewState extends State<AboutView> {
                 ),
                 title: Text('Denis Gancel Quartet', style: textStyleTitle),
                 actions: [
-                  Row(
-                      mainAxisSize: MainAxisSize.max,
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: [
-                        MouseRegionButton(
-                          'spotify',
-                          onPressed: () => launchInBrowser(
-                              'https://open.spotify.com/artist/6s3HsM7KsqkGJAtqQ6yQUl'),
-                        ),
-                        MouseRegionButton(
-                          'youtube',
-                          onPressed: () => launchInBrowser(
-                              'https://www.youtube.com/user/denisgancel'),
-                        ),
-                        MouseRegionButton(
-                          'facebook',
-                          onPressed: () => launchInBrowser(
-                              'https://www.facebook.com/denisgancelquartetcie/'),
-                        ),
-                      ]),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Row(
+                        mainAxisSize: MainAxisSize.max,
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          MouseRegionButton(
+                            'spotify',
+                            onPressed: () => launchInBrowser(
+                                'https://open.spotify.com/artist/6s3HsM7KsqkGJAtqQ6yQUl'),
+                          ),
+                          MouseRegionButton(
+                            'youtube',
+                            onPressed: () => launchInBrowser(
+                                'https://www.youtube.com/user/denisgancel'),
+                          ),
+                          MouseRegionButton(
+                            'facebook',
+                            onPressed: () => launchInBrowser(
+                                'https://www.facebook.com/denisgancelquartetcie/'),
+                          ),
+                        ]),
+                  ),
                 ]),
             SliverPadding(
               padding: const EdgeInsets.all(10),
