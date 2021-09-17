@@ -27,6 +27,7 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
       duration: const Duration(seconds: 5),
       vsync: this,
     );
+
     curve = CurvedAnimation(
         parent: controller, curve: Curves.fastLinearToSlowEaseIn);
     controller.forward();

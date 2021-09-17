@@ -84,7 +84,8 @@ class _SongsState extends State<Songs> with TickerProviderStateMixin {
       appBar: appBar(context, false),
       body: Stack(
         children: [
-          // backgroundSongs(context, widget.albumName),
+          // backgroundSon
+          //gs(context, widget.albumName),
           Scrollbar(
             child: ListView.builder(
               padding: EdgeInsets.symmetric(vertical: widget._height / 6),

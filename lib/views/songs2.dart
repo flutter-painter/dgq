@@ -1,5 +1,4 @@
 import 'package:dgq/data/audio.dart';
-import 'package:dgq/models/album.dart';
 import 'package:dgq/globals.dart' as globals;
 import 'package:dgq/constants.dart';
 import 'package:dgq/style.dart';
@@ -22,8 +21,10 @@ class _PlayerState extends State<Player> with WidgetsBindingObserver {
 
   int currentIndex = 0;
 
-  ConcatenatingAudioSource _playlist =
-      ConcatenatingAudioSource(children: audioSource);
+  ConcatenatingAudioSource _playlist = ConcatenatingAudioSource(
+    children: audioSource,
+    useLazyPreparation: true,
+  );
 
   @override
   void initState() {
@@ -53,7 +54,11 @@ class _PlayerState extends State<Player> with WidgetsBindingObserver {
       });
     });
     try {
-      await _player.setAudioSource(_playlist);
+      await _player.setAudioSource(
+        _playlist,
+        preload: true,
+        initialIndex: 0,
+      );
     } catch (e) {
       print('Error loading audio source : $e');
     }
@@ -74,7 +79,7 @@ class _PlayerState extends State<Player> with WidgetsBindingObserver {
 
   Widget _buildPlayerCard() {
     return Positioned(
-        top: MediaQuery.of(context).size.height * .5,
+        top: globals.screenHeight(context) * .5,
         child: FractionalTranslation(
           translation: Offset(0, -.5),
           child: Stack(
@@ -120,20 +125,33 @@ class _PlayerState extends State<Player> with WidgetsBindingObserver {
   }
 
   Widget _buildArtwork(String artwork) {
-    return Container(
-      width: artWorkDi,
-      height: artWorkDi,
-      decoration: BoxDecoration(
-          image: DecorationImage(image: AssetImage(artwork)),
-          shape: BoxShape.circle,
-          boxShadow: [
-            BoxShadow(
-              color: Color(0x142196F3),
-              offset: Offset(0, 40),
-              blurRadius: 40,
+    return artwork.isEmpty
+        ? const SizedBox()
+        : AnimatedSwitcher(
+            duration: Duration(seconds: 1),
+            child: Container(
+              key: Key(artwork),
+              width: artWorkDi,
+              height: artWorkDi,
+              decoration: BoxDecoration(
+                  image: DecorationImage(image: AssetImage(artwork)),
+                  shape: BoxShape.circle,
+                  boxShadow: [
+                    BoxShadow(
+                      color: Color(0x142196F3),
+                      offset: Offset(0, 40),
+                      blurRadius: 40,
+                    ),
+                  ]),
             ),
-          ]),
-    );
+            transitionBuilder: (child, animation) {
+              return RotationTransition(
+                turns: animation,
+                alignment: Alignment.center,
+                child: FadeTransition(opacity: animation, child: child),
+              );
+            },
+          );
   }
 
   Widget _buildMetaData() {
@@ -151,16 +169,38 @@ class _PlayerState extends State<Player> with WidgetsBindingObserver {
               _buildArtwork(metadata.artwork),
               Padding(
                 padding: const EdgeInsets.only(top: 8.0),
-                child: Text(
-                  metadata.title,
-                  style: textStyleTitle,
+                child: AnimatedSwitcher(
+                  duration: Duration(milliseconds: 600),
+                  switchInCurve: Curves.bounceIn,
+                  child: Text(
+                    metadata.title,
+                    key: Key(metadata.title),
+                    style: textStyleTitle,
+                  ),
+                  transitionBuilder: (child, animation) {
+                    return ScaleTransition(
+                      scale: animation,
+                      child: FadeTransition(opacity: animation, child: child),
+                    );
+                  },
                 ),
               ),
               Padding(
                 padding: const EdgeInsets.only(top: 8.0),
-                child: Text(
-                  metadata.album,
-                  style: textStyleAlbum,
+                child: AnimatedSwitcher(
+                  duration: Duration(milliseconds: 600),
+                  switchInCurve: Curves.bounceIn,
+                  child: Text(
+                    metadata.album,
+                    style: textStyleAlbum,
+                    key: Key(metadata.album),
+                  ),
+                  transitionBuilder: (child, animation) {
+                    return ScaleTransition(
+                      scale: animation,
+                      child: FadeTransition(opacity: animation, child: child),
+                    );
+                  },
                 ),
               ),
             ],
@@ -171,10 +211,11 @@ class _PlayerState extends State<Player> with WidgetsBindingObserver {
   }
 
   Widget _buildPlayerContent() {
-    double dd = (MediaQuery.of(context).size.height / 2) -
+    double dd = (globals.screenHeight(context) / 2) -
         (minCardHeight / 2 + artWorkDi / 2);
     return Positioned(
       top: dd,
+      width: cardWidth - (defaultPadding * 2),
       child: Column(
         children: [
           _buildMetaData(),

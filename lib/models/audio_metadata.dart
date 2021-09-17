@@ -1,9 +1,9 @@
 class AudioMetadata {
-  String artwork;
-  String album;
-  String title;
+  final String artwork;
+  final String album;
+  final String title;
 
-  AudioMetadata(
+  const AudioMetadata(
     this.artwork,
     this.album,
     this.title,
