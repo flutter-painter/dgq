@@ -21,7 +21,7 @@ class _PlayerState extends State<Player> with WidgetsBindingObserver {
 
   int currentIndex = 0;
 
-  ConcatenatingAudioSource _playlist = ConcatenatingAudioSource(
+  final _playlist = ConcatenatingAudioSource(
     children: audioSource,
     useLazyPreparation: true,
   );
@@ -37,12 +37,15 @@ class _PlayerState extends State<Player> with WidgetsBindingObserver {
   @override
   void dispose() {
     WidgetsBinding.instance?.removeObserver(this);
+    _player.dispose();
     super.dispose();
   }
 
   @override
   void didChangeAppLifecycleState(AppLifecycleState state) {
     if (state == AppLifecycleState.paused) {
+      _player.stop();
+    } else if (state == AppLifecycleState.resumed) {
       _player.stop();
     }
   }
@@ -69,9 +72,7 @@ class _PlayerState extends State<Player> with WidgetsBindingObserver {
       duration: Duration(milliseconds: 600),
       decoration: BoxDecoration(
         gradient: background.evaluate(
-          AlwaysStoppedAnimation(
-            currentIndex / audioSource.length,
-          ),
+          AlwaysStoppedAnimation(currentIndex / audioSource.length),
         ),
       ),
     );

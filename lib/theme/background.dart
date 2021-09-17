@@ -14,37 +14,31 @@ class RadialGradientTween extends Tween<RadialGradient> {
 final Animatable<LinearGradient> background = TweenSequence<LinearGradient>([
   TweenSequenceItem(
       tween: LinearGradientTween(
-        begin: LinearGradient(
-          begin: Alignment.bottomLeft,
-          end: Alignment.topRight,
-          colors: [Colors.blue, Colors.blue[200]],
-        ),
-        end: LinearGradient(
-          begin: Alignment.bottomLeft,
-          end: Alignment.topRight,
-          colors: [Colors.blue[200], Colors.blue[900]],
-        ),
-      ),
+          begin: LinearGradient(
+            begin: Alignment.bottomLeft,
+            end: Alignment.topRight,
+            colors: [Colors.blue[300], Colors.blue[900]],
+          ),
+          end: linear1),
       weight: 1.0),
   TweenSequenceItem(
       tween: LinearGradientTween(
         begin: linear1,
-        end: linear2,
-      ),
-      weight: 1.0),
-  TweenSequenceItem(
-      tween: LinearGradientTween(
-        begin: LinearGradient(
+        end: LinearGradient(
           begin: Alignment.bottomLeft,
           end: Alignment.topRight,
           colors: [Colors.orange, Colors.orange[200]],
         ),
-        end: LinearGradient(
-          begin: Alignment.bottomLeft,
-          end: Alignment.topRight,
-          colors: [Colors.orange[200], Colors.orange[900]],
-        ),
       ),
+      weight: 1.0),
+  TweenSequenceItem(
+      tween: LinearGradientTween(
+          begin: LinearGradient(
+            begin: Alignment.bottomLeft,
+            end: Alignment.topRight,
+            colors: [Colors.orange[300], Colors.orange[600]],
+          ),
+          end: linear1),
       weight: 1.0),
 ]);
 
@@ -66,28 +60,3 @@ final linear2 = LinearGradient(
   begin: Alignment.topRight,
   end: Alignment.bottomLeft,
 );
-
-class BackgroundColorBlue extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        gradient: RadialGradient(
-          colors: [
-            Colors.blue,
-            Colors.blue[900],
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-class BackgroundColorMix extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(color: Colors.orange[900]),
-    );
-  }
-}

@@ -7,7 +7,7 @@ final List<AudioSource> audioSource = [
       scheme: 'asset',
       path: 'assets/Mimich_Blues.mp3',
     ),
-    tag: AudioMetadata(
+    tag: const AudioMetadata(
       'assets/miscellanees.jpg',
       'Miscellanées',
       'Mimich Blues',
@@ -16,12 +16,12 @@ final List<AudioSource> audioSource = [
   AudioSource.uri(
     Uri(
       scheme: 'asset',
-      path: 'assets/Premier_argent_de_poche.mp3',
+      path: 'assets/gavotte.mp3',
     ),
-    tag: AudioMetadata(
+    tag: const AudioMetadata(
       'assets/bric_a_brac.jpg',
       'Bric à brac',
-      'Premier argent de poche',
+      'Gavotte arrangée',
     ),
   ),
   AudioSource.uri(
@@ -29,7 +29,7 @@ final List<AudioSource> audioSource = [
       scheme: 'asset',
       path: 'assets/Deconfinado.mp3',
     ),
-    tag: AudioMetadata(
+    tag: const AudioMetadata(
       'assets/puzzle.jpg',
       'Puzzle',
       'Deconfinado',
