@@ -1,4 +1,5 @@
 import 'package:dgq/views/home.dart';
+import 'package:dgq/views/songs2.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'globals.dart' as globals;
@@ -28,7 +29,7 @@ class MyApp extends StatelessWidget {
           // indicatorColor: Colors.black,
           // hoverColor: Colors.black,
           ),
-      home: Home(),
+      home: Player(), //Home(),
     );
   }
 }
