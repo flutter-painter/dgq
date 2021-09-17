@@ -95,7 +95,7 @@ class _PlayerState extends State<Player>
                   ),
                 );
               },
-              child: Text('Denis Gancel Quartet\nLes musiciens',
+              child: Text('Les Musiciens du Denis Gancel Quartet',
                   textAlign: TextAlign.center, style: textStyleTitle),
             ),
           ),
