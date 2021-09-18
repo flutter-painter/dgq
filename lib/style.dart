@@ -19,3 +19,10 @@ const textStyleAlbum = TextStyle(
   fontWeight: FontWeight.w300,
   fontSize: 18,
 );
+
+const textStyleAlbumBlack = TextStyle(
+  fontFamily: 'Quicksand',
+  color: Colors.black,
+  fontWeight: FontWeight.w300,
+  fontSize: 18,
+);

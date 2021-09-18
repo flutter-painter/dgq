@@ -1,5 +1,4 @@
-const double defaultPadding = 16.0;
-const double minCardHeight = 348;
-const double maxCardHeight = 380;
-const double cardWidth = 380;
+const double defaultPadding = 12.0;
+const double minCardHeight = 322;
+const double maxCardHeight = 344;
 const double artWorkDi = 220;

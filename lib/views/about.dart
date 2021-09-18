@@ -16,40 +16,57 @@ class AboutView extends StatefulWidget {
 
 class _AboutViewState extends State<AboutView> {
   final ScrollController controller = ScrollController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: Stack(
-      children: [
-        CustomScrollView(
-          controller: controller,
-          slivers: <Widget>[
-            SliverAppBar(
-                expandedHeight: globals.screenHeight(context) * .4,
-                collapsedHeight: globals.screenHeight(context) * .12,
-                floating: true,
-                centerTitle: true,
-                pinned: true,
-                snap: true,
-                stretch: true,
-                backgroundColor: Colors.black,
-                automaticallyImplyLeading: false,
-                flexibleSpace: Stack(
-                  children: <Widget>[
-                    Positioned.fill(
+      body: Column(
+        children: [
+          Container(
+            height: globals.screenHeight(context),
+            child: CustomScrollView(
+              shrinkWrap: false,
+              controller: controller,
+              slivers: <Widget>[
+                SliverAppBar(
+                  // collapsedHeight: globals.screenHeight(context) * .12,
+                  expandedHeight: globals.screenHeight(context) * .4,
+                  centerTitle: true,
+                  pinned: true,
+                  //floating: true,
+                  //stretch: true,
+                  //snap: true,
+                  backgroundColor: Colors.black,
+                  automaticallyImplyLeading: false,
+                  flexibleSpace: Stack(
+                    children: <Widget>[
+                      Positioned.fill(
                         child: Image.asset(
-                      'assets/band.png',
-                      fit: BoxFit.cover,
-                    ))
-                  ],
+                          'assets/band.png',
+                          fit: BoxFit.cover,
+                        ),
+                      )
+                    ],
+                  ),
+                  title: Text(
+                      globals.screenWidth(context) < 400
+                          ? 'DGQ'
+                          : 'Denis Gancel Quartet',
+                      overflow: TextOverflow.fade,
+                      style: textStyleTitle),
                 ),
-                title: Text('Denis Gancel Quartet', style: textStyleTitle),
-                actions: [
-                  Padding(
+                SliverToBoxAdapter(
+                  child: Container(
+                    height: globals.screenHeight(context) * .64,
+                    child: PlayerView(),
+                  ),
+                ),
+                SliverToBoxAdapter(
+                  child: Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Row(
                         mainAxisSize: MainAxisSize.max,
-                        mainAxisAlignment: MainAxisAlignment.end,
+                        mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           MouseRegionButton(
                             'spotify',
@@ -68,43 +85,47 @@ class _AboutViewState extends State<AboutView> {
                           ),
                         ]),
                   ),
-                ]),
-            SliverPadding(
-              padding: const EdgeInsets.all(10),
-              sliver: SliverGrid(
-                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisSpacing: globals.screenWidth(context) / 10,
-                  mainAxisSpacing: globals.screenHeight(context) / 40,
-                  crossAxisCount: 2,
                 ),
-                delegate: SliverChildBuilderDelegate(
-                  (BuildContext context, int index) =>
-                      MusicianWidget(musicians[index]),
-                  childCount: musicians.length,
-                ),
-              ),
-            ),
-          ],
-        ),
-        Align(
-          alignment: Alignment.bottomCenter,
-          child: SizedBox(
-            height: 40,
-            width: 40,
-            child: IconButton(
-              onPressed: () {
-                globals.appNavigator.currentState.push(
-                  MaterialPageRoute(
-                    builder: (context) => Player(),
+                SliverPadding(
+                  padding: const EdgeInsets.all(10),
+                  sliver: SliverGrid(
+                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisSpacing: globals.screenWidth(context) / 10,
+                      mainAxisSpacing: globals.screenHeight(context) / 40,
+                      crossAxisCount: 2,
+                    ),
+                    delegate: SliverChildBuilderDelegate(
+                      (BuildContext context, int index) =>
+                          MusicianWidget(musicians[index]),
+                      childCount: musicians.length,
+                    ),
                   ),
-                );
-              },
-              icon: Icon(Icons.music_note),
-              color: Colors.black,
+                ),
+              ],
             ),
           ),
-        )
-      ],
-    ));
+        ],
+      ),
+      // Align(
+      //   alignment: Alignment.bottomCenter,
+      //   child: SizedBox(
+      //     height: 40,
+      //     width: 40,
+      //     child: IconButton(
+      //       onPressed: () {
+      //         globals.appNavigator.currentState.push(
+      //           MaterialPageRoute(
+      //             builder: (context) => Player(),
+      //           ),
+      //         );
+      //       },
+      //       icon: Icon(Icons.music_note),
+      //       color: Colors.black,
+      //     ),
+      //   ),
+      // )
+      //],
+      //)
+    );
   }
 }

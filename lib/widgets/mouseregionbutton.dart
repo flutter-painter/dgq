@@ -24,9 +24,10 @@ class MouseRegionButton extends StatelessWidget {
           child: Text(
             text,
             style: TextStyle(
-                fontSize: 14,
-                color: !hover ? Colors.white : Colors.black,
-                letterSpacing: 1),
+              fontSize: 14,
+              color: hover ? Colors.white : Colors.black,
+              letterSpacing: 1,
+            ),
           ),
         ),
       );

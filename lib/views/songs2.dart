@@ -9,14 +9,14 @@ import 'package:dgq/widgets/music_controls.dart';
 import 'package:flutter/material.dart';
 import 'package:just_audio/just_audio.dart';
 
-class Player extends StatefulWidget {
-  Player({Key key}) : super(key: key);
+class PlayerView extends StatefulWidget {
+  PlayerView({Key key}) : super(key: key);
 
   @override
-  _PlayerState createState() => _PlayerState();
+  _PlayerViewState createState() => _PlayerViewState();
 }
 
-class _PlayerState extends State<Player>
+class _PlayerViewState extends State<PlayerView>
     with WidgetsBindingObserver, SingleTickerProviderStateMixin {
   AudioPlayer _player;
   final _cardHeight = minCardHeight;
@@ -68,84 +68,35 @@ class _PlayerState extends State<Player>
     }
   }
 
-  Widget _buildGradientBackground() => AnimatedContainer(
-        duration: Duration(milliseconds: 600),
-        decoration: BoxDecoration(
-          gradient: background.evaluate(
-            AlwaysStoppedAnimation(currentIndex / audioSource.length),
-          ),
-        ),
-      );
-
-  Widget _about() => Positioned(
-        bottom: 12,
-        child: Center(
-          child: SizedBox(
-            height: 80,
-            child: TextButton(
-              onPressed: () {
-                // TODO add a mainView on top so player available everywhere
-                _player.stop();
-                globals.appNavigator.currentState.push(
-                  MaterialPageRoute(
-                    builder: (context) => AboutView(),
-                  ),
-                );
-              },
-              child: Text('Les Musiciens du Denis Gancel Quartet',
-                  textAlign: TextAlign.center, style: textStyleTitle),
-            ),
-          ),
-        ),
-      );
-
-  Widget _buildPlayerCard() => Positioned(
-      top: globals.screenHeight(context) * .5,
-      child: FractionalTranslation(
-        translation: Offset(0, -.5),
-        child: Stack(
-          children: [
-            Positioned(
-              width: cardWidth,
-              height: minCardHeight * .5,
-              bottom: 0,
-              child: DecoratedBox(
-                decoration: BoxDecoration(boxShadow: [
-                  BoxShadow(
-                    color: Color(0x1F4D6FDE),
-                    blurRadius: 20,
-                    offset: Offset(20, 20),
-                  ),
-                  BoxShadow(
-                    color: Color(0x1F4D6FDE),
-                    blurRadius: 20,
-                    offset: Offset(-20, 20),
-                  )
-                ]),
-              ),
-            ),
-            Align(
-              alignment: Alignment.topCenter,
-              child: AnimatedContainer(
-                width: cardWidth,
-                height: _cardHeight, // ? minCardHeight
-                duration: Duration(milliseconds: 300),
-                curve: Curves.easeIn,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(24),
-                  gradient: background.evaluate(
-                    AlwaysStoppedAnimation(
-                      currentIndex / audioSource.length,
+  Widget buildPlayerCard() => Positioned(
+        top: globals.screenHeight(context) * .4,
+        child: FractionalTranslation(
+          translation: Offset(0, -.5),
+          child: Stack(
+            children: [
+              Align(
+                alignment: Alignment.topCenter,
+                child: AnimatedContainer(
+                  width: maxCardHeight,
+                  height: _cardHeight, // ? minCardHeight
+                  duration: Duration(milliseconds: 300),
+                  curve: Curves.easeIn,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(24),
+                    gradient: background.evaluate(
+                      AlwaysStoppedAnimation(
+                        currentIndex / audioSource.length,
+                      ),
                     ),
                   ),
                 ),
-              ),
-            )
-          ],
+              )
+            ],
+          ),
         ),
-      ));
+      );
 
-  Widget _buildArtwork(String artwork) => artwork != null && artwork?.isEmpty
+  Widget _buildArtwork(String artwork) => artwork != null && artwork.isEmpty
       ? const SizedBox()
       : AnimatedSwitcher(
           duration: Duration(seconds: 1),
@@ -227,14 +178,14 @@ class _PlayerState extends State<Player>
         },
       );
 
-  Widget _buildPlayerContent() => Positioned(
-        top: (globals.screenHeight(context) / 2) -
+  Widget buildPlayerContent() => Positioned(
+        top: (globals.screenHeight(context) / 2.5) -
             (minCardHeight / 2 + artWorkDi / 2),
-        width: cardWidth - (defaultPadding * 2),
+        width: maxCardHeight - (defaultPadding * 3),
         child: Column(
           children: [
             _buildMetaData(),
-            SizedBox(height: defaultPadding * 2),
+            SizedBox(height: defaultPadding),
             MusicControls(player: _player),
           ],
         ),
@@ -242,16 +193,13 @@ class _PlayerState extends State<Player>
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        body: Stack(
+    return Stack(
       fit: StackFit.expand,
       alignment: Alignment.center,
       children: [
-        // _buildGradientBackground(),
-        _buildPlayerCard(),
-        _buildPlayerContent(),
-        // _about()
+        buildPlayerCard(),
+        buildPlayerContent(),
       ],
-    ));
+    );
   }
 }
