@@ -8,7 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:dgq/globals.dart' as globals;
 
 class AboutView extends StatefulWidget {
-  AboutView({Key key}) : super(key: key);
+  AboutView({Key? key}) : super(key: key);
 
   @override
   _AboutViewState createState() => _AboutViewState();
@@ -57,7 +57,7 @@ class _AboutViewState extends State<AboutView> {
                 ),
                 SliverToBoxAdapter(
                   child: Container(
-                    height: globals.screenHeight(context) * .84,
+                    height: globals.screenHeight(context) * .80,
                     child: PlayerView(),
                   ),
                 ),

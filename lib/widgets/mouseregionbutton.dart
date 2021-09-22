@@ -4,7 +4,7 @@ class MouseRegionButton extends StatelessWidget {
   final Function onPressed;
   final String text;
 
-  const MouseRegionButton(this.text, {Key key, @required this.onPressed})
+  const MouseRegionButton(this.text, {Key? key, required this.onPressed})
       : super(key: key);
 
   @override

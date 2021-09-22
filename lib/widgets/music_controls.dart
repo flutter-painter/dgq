@@ -1,13 +1,12 @@
-// import 'dart:math';
+import 'package:just_audio/just_audio.dart';
 import 'package:dgq/models/position_data.dart';
 import 'package:dgq/widgets/seek_bar.dart';
 import 'package:flutter/material.dart';
-import 'package:just_audio/just_audio.dart';
 import 'package:rxdart/rxdart.dart';
 
 class MusicControls extends StatefulWidget {
   final AudioPlayer player;
-  MusicControls({this.player, Key key}) : super(key: key);
+  MusicControls({required this.player, Key? key}) : super(key: key);
 
   @override
   _MusicControlsState createState() => _MusicControlsState();
@@ -15,9 +14,9 @@ class MusicControls extends StatefulWidget {
 
 class _MusicControlsState extends State<MusicControls>
     with SingleTickerProviderStateMixin {
-  AudioPlayer _player;
-  AnimationController controller;
-  Animation<double> curve;
+  late AudioPlayer _player;
+  late AnimationController controller;
+  late Animation<double> curve;
   bool flag = true;
 
   @override
@@ -39,12 +38,13 @@ class _MusicControlsState extends State<MusicControls>
   }
 
   Stream<PositionData> get _positionDataStream =>
-      Rx.combineLatest3<Duration, Duration, Duration, PositionData>(
-          _player.positionStream,
-          _player.bufferedPositionStream,
-          _player.durationStream,
-          (position, bufferedPosition, duration) => PositionData(
-              position, bufferedPosition, duration ?? Duration.zero));
+      Rx.combineLatest3<Duration, Duration, Duration?, PositionData>(
+        _player.positionStream,
+        _player.bufferedPositionStream,
+        _player.durationStream,
+        (position, bufferedPosition, duration) =>
+            PositionData(position, bufferedPosition, duration ?? Duration.zero),
+      );
 
   @override
   Widget build(BuildContext context) {
@@ -57,7 +57,7 @@ class _MusicControlsState extends State<MusicControls>
             SizedBox(
               width: 64,
               height: 64,
-              child: StreamBuilder<SequenceState>(
+              child: StreamBuilder<SequenceState?>(
                 stream: _player.sequenceStateStream,
                 builder: (context, snapshot) => IconButton(
                   icon: Icon(
@@ -70,7 +70,7 @@ class _MusicControlsState extends State<MusicControls>
                 ),
               ),
             ),
-            StreamBuilder<PlayerState>(
+            StreamBuilder<PlayerState?>(
               stream: _player.playerStateStream,
               builder: (context, snapshot) {
                 final playerState = snapshot.data;
@@ -93,7 +93,7 @@ class _MusicControlsState extends State<MusicControls>
                     height: 70,
                     child: InkWell(
                       onTap: () {
-                        if (!playing) {
+                        if (!playing!) {
                           controller.forward();
                           _player.play();
                         }
@@ -116,12 +116,12 @@ class _MusicControlsState extends State<MusicControls>
                     icon: Icon(Icons.replay, color: Colors.white),
                     iconSize: 64.0,
                     onPressed: () => _player.seek(Duration.zero,
-                        index: _player.effectiveIndices.first),
+                        index: _player.effectiveIndices?.first),
                   );
                 }
               },
             ),
-            StreamBuilder<SequenceState>(
+            StreamBuilder<SequenceState?>(
               stream: _player.sequenceStateStream,
               builder: (context, snapshot) => SizedBox(
                 width: 70,

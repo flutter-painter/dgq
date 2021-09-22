@@ -6,13 +6,13 @@ import 'package:dgq/globals.dart' as globals;
 
 class MusicianWidget extends StatelessWidget {
   final Musician musician;
-  const MusicianWidget(this.musician, {Key key}) : super(key: key);
+  const MusicianWidget(this.musician, {Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () async {
-        globals.appNavigator.currentState.push(
+        globals.appNavigator.currentState?.push(
           MaterialPageRoute(
             builder: (context) => MusicianPage(musician),
           ),

@@ -4,13 +4,13 @@ import 'package:dgq/constants.dart';
 import 'package:dgq/style.dart';
 import 'package:dgq/models/audio_metadata.dart';
 import 'package:dgq/theme/background.dart';
-import 'package:dgq/views/about.dart';
+// import 'package:dgq/views/about.dart';
 import 'package:dgq/widgets/music_controls.dart';
 import 'package:flutter/material.dart';
 import 'package:just_audio/just_audio.dart';
 
 class PlayerView extends StatefulWidget {
-  PlayerView({Key key}) : super(key: key);
+  PlayerView({Key? key}) : super(key: key);
 
   @override
   _PlayerViewState createState() => _PlayerViewState();
@@ -18,9 +18,9 @@ class PlayerView extends StatefulWidget {
 
 class _PlayerViewState extends State<PlayerView>
     with WidgetsBindingObserver, SingleTickerProviderStateMixin {
-  AudioPlayer _player;
+  late AudioPlayer _player;
   final _cardHeight = minCardHeight;
-  int currentIndex = 0;
+  late int currentIndex = 0;
 
   final _playlist = ConcatenatingAudioSource(
     children: audioSource,
@@ -54,7 +54,7 @@ class _PlayerViewState extends State<PlayerView>
   Future<void> _init() async {
     _player.sequenceStateStream.listen((event) {
       setState(() {
-        currentIndex = event?.currentIndex;
+        currentIndex = event!.currentIndex;
       });
     });
     try {
@@ -96,7 +96,7 @@ class _PlayerViewState extends State<PlayerView>
         ),
       );
 
-  Widget _buildArtwork(String artwork) => artwork != null && artwork.isEmpty
+  Widget _buildArtwork(String artwork) => artwork.isEmpty
       ? const SizedBox()
       : AnimatedSwitcher(
           duration: Duration(seconds: 1),
@@ -124,14 +124,14 @@ class _PlayerViewState extends State<PlayerView>
           },
         );
 
-  Widget _buildMetaData() => StreamBuilder<SequenceState>(
+  Widget _buildMetaData() => StreamBuilder<SequenceState?>(
         stream: _player.sequenceStateStream,
         builder: (context, snapshot) {
           final state = snapshot.data;
-          if (state?.sequence?.isEmpty ?? true) {
+          if (state?.sequence.isEmpty ?? true) {
             return const SizedBox();
           } else {
-            final metadata = state?.currentSource?.tag as AudioMetadata;
+            final metadata = state!.currentSource!.tag as AudioMetadata;
             return Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [

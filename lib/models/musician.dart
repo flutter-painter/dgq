@@ -7,7 +7,7 @@ class Musician {
   final bool isQuartet;
   Musician(
       this.firstName, this.lastName, this.instrument, this.bio, this.photoPath,
-      {this.isQuartet});
+      {required this.isQuartet});
 }
 
 List<Musician> musicians = [
