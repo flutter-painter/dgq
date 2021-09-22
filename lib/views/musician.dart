@@ -11,7 +11,7 @@ class MusicianView extends StatelessWidget {
   Widget build(BuildContext context) {
     final ScrollController controller = ScrollController();
     return Scaffold(
-      backgroundColor: Colors.white70,
+      backgroundColor: Colors.white38,
       body: SingleChildScrollView(
         child: Column(
           children: [

@@ -9,10 +9,10 @@ final List<AudioSource> audioSource = [
         // path: 'assets/Mimich_Blues.mp3',
         ),
     tag: const AudioMetadata(
-      'assets/miscellanees.jpg',
-      'Miscellanées',
-      'Mimich Blues',
-    ),
+        'assets/miscellanees.jpg',
+        'Miscellanées',
+        'Mimich Blues',
+        "https://denisgancelquartet.bandcamp.com/album/miscellan-es"),
   ),
   AudioSource.uri(
     Uri.parse(
@@ -24,6 +24,7 @@ final List<AudioSource> audioSource = [
       'assets/bric_a_brac.jpg',
       'Bric à brac',
       'Gavotte arrangée',
+      "https://denisgancelquartet.bandcamp.com/album/bric-brac",
     ),
   ),
   AudioSource.uri(
@@ -36,6 +37,7 @@ final List<AudioSource> audioSource = [
       'assets/puzzle.jpg',
       'Puzzle',
       'Deconfinado',
+      "https://denisgancelquartet.bandcamp.com/album/puzzle",
     ),
   ),
 ];
