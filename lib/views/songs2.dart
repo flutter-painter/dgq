@@ -46,10 +46,9 @@ class _PlayerViewState extends State<PlayerView>
   void didChangeAppLifecycleState(AppLifecycleState state) {
     if (state == AppLifecycleState.paused) {
       _player.stop();
+    } else if (state == AppLifecycleState.resumed) {
+      _player.stop();
     }
-    // else if (state == AppLifecycleState.resumed) {
-    //  _player.stop();
-    //}
   }
 
   Future<void> _init() async {
