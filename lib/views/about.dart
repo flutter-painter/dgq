@@ -57,7 +57,7 @@ class _AboutViewState extends State<AboutView> {
                 ),
                 SliverToBoxAdapter(
                   child: Container(
-                    height: globals.screenHeight(context) * .64,
+                    height: globals.screenHeight(context) * .84,
                     child: PlayerView(),
                   ),
                 ),

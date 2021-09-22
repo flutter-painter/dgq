@@ -69,7 +69,7 @@ class _PlayerViewState extends State<PlayerView>
   }
 
   Widget buildPlayerCard() => Positioned(
-        top: globals.screenHeight(context) * .4,
+        top: globals.screenHeight(context) * .5,
         child: FractionalTranslation(
           translation: Offset(0, -.5),
           child: Stack(
@@ -179,7 +179,7 @@ class _PlayerViewState extends State<PlayerView>
       );
 
   Widget buildPlayerContent() => Positioned(
-        top: (globals.screenHeight(context) / 2.5) -
+        top: (globals.screenHeight(context) / 2) -
             (minCardHeight / 2 + artWorkDi / 2),
         width: maxCardHeight - (defaultPadding * 3),
         child: Column(
@@ -195,7 +195,7 @@ class _PlayerViewState extends State<PlayerView>
   Widget build(BuildContext context) {
     return Stack(
       fit: StackFit.expand,
-      alignment: Alignment.center,
+      alignment: Alignment.bottomCenter,
       children: [
         buildPlayerCard(),
         buildPlayerContent(),
