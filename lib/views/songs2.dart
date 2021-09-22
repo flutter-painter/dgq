@@ -24,7 +24,7 @@ class _PlayerViewState extends State<PlayerView>
 
   final _playlist = ConcatenatingAudioSource(
     children: audioSource,
-    useLazyPreparation: true,
+    useLazyPreparation: false,
   );
 
   @override
@@ -61,7 +61,7 @@ class _PlayerViewState extends State<PlayerView>
     try {
       await _player.setAudioSource(
         _playlist,
-        preload: true,
+        preload: false,
         initialIndex: 0,
       );
     } catch (e) {
