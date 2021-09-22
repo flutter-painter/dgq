@@ -2,7 +2,7 @@ import 'package:dgq/models/musician.dart';
 import 'package:dgq/style.dart';
 import 'package:dgq/utils/launch_url.dart';
 import 'package:dgq/views/songs2.dart';
-import 'package:dgq/widgets/mouseregionbutton.dart';
+import 'package:dgq/widgets/mouse_region_button.dart';
 import 'package:dgq/widgets/musician.dart';
 import 'package:flutter/material.dart';
 import 'package:dgq/globals.dart' as globals;

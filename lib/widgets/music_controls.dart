@@ -75,7 +75,7 @@ class _MusicControlsState extends State<MusicControls>
               builder: (context, snapshot) {
                 final playerState = snapshot.data;
                 final processingState = playerState?.processingState;
-                final playing = playerState?.playing;
+                final playing = playerState?.playing ?? false;
                 if (processingState == ProcessingState.loading ||
                     processingState == ProcessingState.buffering) {
                   return Container(
@@ -93,7 +93,7 @@ class _MusicControlsState extends State<MusicControls>
                     height: 70,
                     child: InkWell(
                       onTap: () {
-                        if (!playing!) {
+                        if (!playing) {
                           controller.forward();
                           _player.play();
                         }
