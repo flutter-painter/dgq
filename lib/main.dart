@@ -1,4 +1,4 @@
-import 'package:dgq/views/about.dart';
+import 'package:dgq/views/home.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'globals.dart' as globals;
@@ -15,10 +15,11 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       navigatorKey: globals.appNavigator,
-      theme: ThemeData(
+      theme: ThemeData(backgroundColor: Colors.white70
+
           // primarySwatch: Colors.red,
           // applyElevationOverlayColor: false,
-          //unselectedWidgetColor: Colors.black,
+          // unselectedWidgetColor: Colors.black,
           // canvasColor: Colors.black,
           // colorScheme: ColorScheme.light(),
           // buttonColor: Colors.black,
@@ -28,7 +29,7 @@ class MyApp extends StatelessWidget {
           // indicatorColor: Colors.black,
           // hoverColor: Colors.black,
           ),
-      home: AboutView(), //Home(),
+      home: HomeView(),
     );
   }
 }

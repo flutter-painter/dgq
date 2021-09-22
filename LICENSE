@@ -1,3 +1,28 @@
-Huge thanks to Ryan Heise for providing flutter just audio package
-Music player is shamelessly inspired by Devefy : minimal music player
-https://github.com/devefy
+Copyright (c) 2021 Pierre Gancel.
+
+Redistribution and use in source and binary forms are permitted provided that 
+the above copyright notice and this paragraph are duplicated in all such forms 
+and that any documentation, advertising materials, 
+and other materials related to such distribution and use 
+acknowledge that the app was developed by me (Pierre Gancel). 
+
+My name (Pierre Gancel) may not be used to endorse or promote products 
+derived from this software without specific prior written permission. 
+
+***
+
+Just audio package package is licensed under the MIT License. Here goes the MIT license related to it :
+
+Copyright (c) 2019-2020 Ryan Heise and the project contributors.
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+***

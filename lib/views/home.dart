@@ -1,20 +1,20 @@
 import 'package:dgq/models/musician.dart';
 import 'package:dgq/style.dart';
 import 'package:dgq/utils/launch_url.dart';
-import 'package:dgq/views/songs2.dart';
+import 'package:dgq/views/player.dart';
 import 'package:dgq/widgets/mouse_region_button.dart';
 import 'package:dgq/widgets/musician.dart';
 import 'package:flutter/material.dart';
 import 'package:dgq/globals.dart' as globals;
 
-class AboutView extends StatefulWidget {
-  AboutView({Key? key}) : super(key: key);
+class HomeView extends StatefulWidget {
+  HomeView({Key? key}) : super(key: key);
 
   @override
-  _AboutViewState createState() => _AboutViewState();
+  _HomeViewState createState() => _HomeViewState();
 }
 
-class _AboutViewState extends State<AboutView> {
+class _HomeViewState extends State<HomeView> {
   final ScrollController controller = ScrollController();
 
   @override
@@ -90,9 +90,10 @@ class _AboutViewState extends State<AboutView> {
                   padding: const EdgeInsets.all(10),
                   sliver: SliverGrid(
                     gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisSpacing: globals.screenWidth(context) / 10,
-                      mainAxisSpacing: globals.screenHeight(context) / 40,
-                      crossAxisCount: 2,
+                      crossAxisSpacing: globals.screenWidth(context) / 8,
+                      mainAxisSpacing: globals.screenHeight(context) / 20,
+                      crossAxisCount:
+                          globals.screenWidth(context) > 400 ? 3 : 2,
                     ),
                     delegate: SliverChildBuilderDelegate(
                       (BuildContext context, int index) =>

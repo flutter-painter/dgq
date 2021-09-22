@@ -1,6 +1,6 @@
 import 'package:dgq/models/musician.dart';
 import 'package:dgq/style.dart';
-import 'package:dgq/views/musician_page.dart';
+import 'package:dgq/views/musician.dart';
 import 'package:flutter/material.dart';
 import 'package:dgq/globals.dart' as globals;
 
@@ -14,7 +14,7 @@ class MusicianWidget extends StatelessWidget {
       onTap: () async {
         globals.appNavigator.currentState?.push(
           MaterialPageRoute(
-            builder: (context) => MusicianPage(musician),
+            builder: (context) => MusicianView(musician),
           ),
         );
       },
