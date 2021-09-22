@@ -1,4 +1,5 @@
 import 'package:dgq/data/audio.dart';
+import 'package:dgq/utils/launch_url.dart';
 import 'package:dgq/globals.dart' as globals;
 import 'package:dgq/constants.dart';
 import 'package:dgq/style.dart';
@@ -135,7 +136,10 @@ class _PlayerViewState extends State<PlayerView>
             return Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                _buildArtwork(metadata.artwork),
+                InkWell(
+                  onTap: () => launchInBrowser(metadata.albumUrl),
+                  child: _buildArtwork(metadata.artwork),
+                ),
                 Padding(
                   padding: const EdgeInsets.only(top: 8.0),
                   child: AnimatedSwitcher(

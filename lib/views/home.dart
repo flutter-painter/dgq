@@ -107,26 +107,6 @@ class _HomeViewState extends State<HomeView> {
           ),
         ],
       ),
-      // Align(
-      //   alignment: Alignment.bottomCenter,
-      //   child: SizedBox(
-      //     height: 40,
-      //     width: 40,
-      //     child: IconButton(
-      //       onPressed: () {
-      //         globals.appNavigator.currentState.push(
-      //           MaterialPageRoute(
-      //             builder: (context) => Player(),
-      //           ),
-      //         );
-      //       },
-      //       icon: Icon(Icons.music_note),
-      //       color: Colors.black,
-      //     ),
-      //   ),
-      // )
-      //],
-      //)
     );
   }
 }
