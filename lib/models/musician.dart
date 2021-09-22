@@ -7,7 +7,7 @@ class Musician {
   final bool isQuartet;
   Musician(
       this.firstName, this.lastName, this.instrument, this.bio, this.photoPath,
-      {this.isQuartet});
+      {required this.isQuartet});
 }
 
 List<Musician> musicians = [
@@ -16,11 +16,9 @@ List<Musician> musicians = [
     "Gancel",
     "compo & piano",
     """
-Denis Gancel has a classical musician training, 
-he conducts orchestra at the age of 18 and joins the Ecole Normale de Musique in Paris 
-in the piano class of Jeannine Bonjean. 
-He meets Jacques Loussier in 1985 who becomes his friend and mentor. 
-Jacques Loussier invites Denis Gancel to chart his own musical route.
+Denis Gancel has a classical musician training.
+He conducts orchestra at the age of 18 and joins the Ecole Normale de Musique in Paris in the piano class of Jeannine Bonjean. 
+He meets Jacques Loussier in 1985 who becomes his friend and mentor and invites Denis Gancel to chart his own musical route.
     """,
     'assets/musicians/denis.png',
     isQuartet: true,

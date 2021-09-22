@@ -5,7 +5,7 @@ import 'dart:io';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
-GlobalKey<NavigatorState> appNavigator;
+late GlobalKey<NavigatorState> appNavigator;
 double screenHeight(BuildContext context) {
   return MediaQuery.of(context).size.height;
 }

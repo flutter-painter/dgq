@@ -3,7 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-Widget appBar(BuildContext context, bool isHome, {String title}) {
+Widget appBar(BuildContext context, bool isHome, {String? title}) {
   return PreferredSize(
     preferredSize: Size(double.infinity, kToolbarHeight),
     child: ClipRRect(

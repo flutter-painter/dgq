@@ -8,7 +8,10 @@ const List<Album> albums = [
 ];
 
 const List<Song> puzzleSongs = [
-  const Song('Sortie par gros temps', '03:14'),
+  const Song(
+    'Sortie par gros temps',
+    '03:14',
+  ),
   const Song('Nina', '06:34'),
   const Song('Quintaou Express', '06:05'),
   const Song('Ola bijou!', '05:36'),
