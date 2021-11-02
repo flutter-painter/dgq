@@ -1,5 +1,5 @@
 import 'package:dgq/models/musician.dart';
-import 'package:dgq/style.dart';
+import 'package:dgq/theme/style.dart';
 import 'package:dgq/views/musician.dart';
 import 'package:flutter/material.dart';
 import 'package:dgq/globals.dart' as globals;

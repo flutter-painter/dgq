@@ -1,7 +1,11 @@
+import 'dart:html';
+
 import 'package:dgq/globals.dart' as globals;
 import 'package:dgq/models/musician.dart';
-import 'package:dgq/style.dart';
+import 'package:dgq/theme/style.dart';
 import 'package:flutter/material.dart';
+import 'package:seo_renderer/renderers/image_renderer/image_renderer_web.dart';
+import 'package:seo_renderer/renderers/text_renderer/text_renderer_web.dart';
 
 class MusicianView extends StatelessWidget {
   final Musician musician;
@@ -11,7 +15,6 @@ class MusicianView extends StatelessWidget {
   Widget build(BuildContext context) {
     final ScrollController controller = ScrollController();
     return Scaffold(
-      // backgroundColor: Colors.white38,
       body: SingleChildScrollView(
         child: Column(
           children: [
@@ -50,9 +53,12 @@ class MusicianView extends StatelessWidget {
                             globals.screenWidth(context) * 0.3,
                             globals.screenHeight(context) * .05,
                           ),
-                          child: Text(musician.bio,
-                              style: textStyleAlbumBlack,
-                              overflow: TextOverflow.visible),
+                          child: TextRenderer(
+                            element: ParagraphElement(),
+                            text: Text(musician.bio,
+                                style: textStyleAlbumBlack,
+                                overflow: TextOverflow.visible),
+                          ),
                         ),
                       ),
                     ),

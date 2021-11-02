@@ -1,11 +1,16 @@
+import 'dart:html';
+
+import 'package:dgq/constants.dart';
 import 'package:dgq/models/musician.dart';
-import 'package:dgq/style.dart';
+import 'package:dgq/theme/style.dart';
 import 'package:dgq/utils/launch_url.dart';
 import 'package:dgq/views/player.dart';
 import 'package:dgq/widgets/mouse_region_button.dart';
 import 'package:dgq/widgets/musician.dart';
 import 'package:flutter/material.dart';
 import 'package:dgq/globals.dart' as globals;
+import 'package:seo_renderer/renderers/link_renderer/link_renderer_web.dart';
+import 'package:seo_renderer/renderers/text_renderer/text_renderer_web.dart';
 
 class HomeView extends StatefulWidget {
   HomeView({Key? key}) : super(key: key);
@@ -48,12 +53,15 @@ class _HomeViewState extends State<HomeView> {
                       )
                     ],
                   ),
-                  title: Text(
-                      globals.screenWidth(context) < 400
-                          ? 'DGQ'
-                          : 'Denis Gancel Quartet',
-                      overflow: TextOverflow.fade,
-                      style: textStyleTitle),
+                  title: TextRenderer(
+                    element: TitleElement(),
+                    text: Text(
+                        globals.screenWidth(context) < 400
+                            ? 'DGQ'
+                            : 'Denis Gancel Quartet',
+                        overflow: TextOverflow.fade,
+                        style: textStyleTitle),
+                  ),
                 ),
                 SliverToBoxAdapter(
                   child: SizedBox(
@@ -68,20 +76,29 @@ class _HomeViewState extends State<HomeView> {
                         mainAxisSize: MainAxisSize.max,
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          MouseRegionButton(
-                            'spotify',
-                            onPressed: () => launchInBrowser(
-                                'https://open.spotify.com/artist/6s3HsM7KsqkGJAtqQ6yQUl'),
+                          LinkRenderer(
+                            anchorText: 'Denis Gancel Quartet Spotify',
+                            link: spotifyDGQ,
+                            child: MouseRegionButton(
+                              'spotify',
+                              onPressed: () => launchInBrowser(spotifyDGQ),
+                            ),
                           ),
-                          MouseRegionButton(
-                            'youtube',
-                            onPressed: () => launchInBrowser(
-                                'https://www.youtube.com/user/denisgancel'),
+                          LinkRenderer(
+                            anchorText: 'Denis Gancel Quartet Youtube',
+                            link: youtubeDGQ,
+                            child: MouseRegionButton(
+                              'youtube',
+                              onPressed: () => launchInBrowser(youtubeDGQ),
+                            ),
                           ),
-                          MouseRegionButton(
-                            'facebook',
-                            onPressed: () => launchInBrowser(
-                                'https://www.facebook.com/denisgancelquartetcie/'),
+                          LinkRenderer(
+                            anchorText: 'Denis Gancel Quartet Facebook',
+                            link: facebookDGQ,
+                            child: MouseRegionButton(
+                              'facebook',
+                              onPressed: () => launchInBrowser(facebookDGQ),
+                            ),
                           ),
                         ]),
                   ),

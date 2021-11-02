@@ -2,6 +2,7 @@ import 'package:dgq/views/home.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'globals.dart' as globals;
+import 'package:seo_renderer/seo_renderer.dart';
 
 void main() {
   globals.appNavigator = GlobalKey<NavigatorState>();
@@ -15,20 +16,8 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       navigatorKey: globals.appNavigator,
-      theme: ThemeData(backgroundColor: Colors.white70
-
-          // primarySwatch: Colors.red,
-          // applyElevationOverlayColor: false,
-          // unselectedWidgetColor: Colors.black,
-          // canvasColor: Colors.black,
-          // colorScheme: ColorScheme.light(),
-          // buttonColor: Colors.black,
-          // primaryColor: Colors.black,
-          // primaryColorLight: Colors.black,
-          // accentColor: Colors.black,
-          // indicatorColor: Colors.black,
-          // hoverColor: Colors.black,
-          ),
+      navigatorObservers: [routeObserver],
+      theme: ThemeData(backgroundColor: Colors.white70),
       home: HomeView(),
     );
   }
