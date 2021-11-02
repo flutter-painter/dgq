@@ -13,9 +13,7 @@ class MusicianWidget extends StatelessWidget {
     return InkWell(
       onTap: () async {
         globals.appNavigator.currentState?.push(
-          MaterialPageRoute(
-            builder: (context) => MusicianView(musician),
-          ),
+          MaterialPageRoute(builder: (context) => MusicianView(musician)),
         );
       },
       child: Stack(
@@ -43,34 +41,35 @@ class MusicianWidget extends StatelessWidget {
               border: Border.all(color: Colors.white.withOpacity(.3), width: 1),
             ),
           ),
-          Column(
-            mainAxisAlignment: MainAxisAlignment.end,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Padding(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 24.0, vertical: 16),
-                child: RichText(
-                  text: TextSpan(style: textStyleAlbum, children: [
-                    TextSpan(
-                      text: musician.firstName + ' ' + musician.lastName,
-                      style:
-                          TextStyle(fontWeight: FontWeight.w700, fontSize: 22),
-                    ),
-                    TextSpan(
-                      text: '\n' + musician.instrument,
-                    ),
-                    TextSpan(
-                      text: musician.isQuartet ? '' : ' (Guest Star)',
-                      style:
-                          TextStyle(fontStyle: FontStyle.italic, fontSize: 12),
-                    ),
-                  ]),
+          if (globals.screenWidth(context) > 400)
+            Column(
+              mainAxisAlignment: MainAxisAlignment.end,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.symmetric(
+                      horizontal: 24.0, vertical: 16),
+                  child: RichText(
+                    text: TextSpan(style: textStyleAlbum, children: [
+                      TextSpan(
+                        text: musician.firstName + ' ' + musician.lastName,
+                        style: TextStyle(
+                            fontWeight: FontWeight.w700, fontSize: 22),
+                      ),
+                      TextSpan(
+                        text: '\n' + musician.instrument,
+                      ),
+                      TextSpan(
+                        text: musician.isQuartet ? '' : ' (Guest Star)',
+                        style: TextStyle(
+                            fontStyle: FontStyle.italic, fontSize: 12),
+                      ),
+                    ]),
+                  ),
                 ),
-              ),
-            ],
-          ),
+              ],
+            ),
         ],
       ),
     );
