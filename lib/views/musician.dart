@@ -11,11 +11,11 @@ class MusicianView extends StatelessWidget {
   Widget build(BuildContext context) {
     final ScrollController controller = ScrollController();
     return Scaffold(
-      backgroundColor: Colors.white38,
+      // backgroundColor: Colors.white38,
       body: SingleChildScrollView(
         child: Column(
           children: [
-            Container(
+            SizedBox(
               height: globals.screenHeight(context),
               child: CustomScrollView(
                 shrinkWrap: false,
@@ -40,25 +40,24 @@ class MusicianView extends StatelessWidget {
                       ),
                     ),
                   ),
-                  musician.bio.isEmpty
-                      ? const SliverToBoxAdapter()
-                      : SliverToBoxAdapter(
-                          child: Center(
-                            child: Padding(
-                              padding: const EdgeInsets.fromLTRB(
-                                  21.0, 21.0, 21.0, 0.0),
-                              child: SizedBox(
-                                height: globals.screenHeight(context) * .20,
-                                child: Text(
-                                  musician.bio,
-                                  style: textStyleAlbumBlack,
-                                ),
-                              ),
-                            ),
+                  if (musician.bio.isNotEmpty)
+                    SliverToBoxAdapter(
+                      child: Center(
+                        child: Padding(
+                          padding: EdgeInsets.fromLTRB(
+                            globals.screenWidth(context) * 0.3,
+                            globals.screenHeight(context) * .1,
+                            globals.screenWidth(context) * 0.3,
+                            globals.screenHeight(context) * .05,
                           ),
+                          child: Text(musician.bio,
+                              style: textStyleAlbumBlack,
+                              overflow: TextOverflow.visible),
                         ),
+                      ),
+                    ),
                   SliverPadding(
-                    padding: const EdgeInsets.all(10),
+                    padding: const EdgeInsets.all(40),
                     sliver: SliverFillRemaining(
                       child: Center(
                         child: Hero(

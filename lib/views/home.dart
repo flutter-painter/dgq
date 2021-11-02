@@ -22,7 +22,7 @@ class _HomeViewState extends State<HomeView> {
     return Scaffold(
       body: Column(
         children: [
-          Container(
+          SizedBox(
             height: globals.screenHeight(context),
             child: CustomScrollView(
               shrinkWrap: false,
@@ -56,7 +56,7 @@ class _HomeViewState extends State<HomeView> {
                       style: textStyleTitle),
                 ),
                 SliverToBoxAdapter(
-                  child: Container(
+                  child: SizedBox(
                     height: globals.screenHeight(context) * .80,
                     child: PlayerView(),
                   ),

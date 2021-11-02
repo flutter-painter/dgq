@@ -85,9 +85,7 @@ class _PlayerViewState extends State<PlayerView>
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(24),
                     gradient: background.evaluate(
-                      AlwaysStoppedAnimation(
-                        currentIndex / audioSource.length,
-                      ),
+                      AlwaysStoppedAnimation(currentIndex / audioSource.length),
                     ),
                   ),
                 ),

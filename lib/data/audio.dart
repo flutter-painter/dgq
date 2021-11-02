@@ -4,15 +4,16 @@ import 'package:just_audio/just_audio.dart';
 final List<AudioSource> audioSource = [
   AudioSource.uri(
     Uri.parse(
-        'https://firebasestorage.googleapis.com/v0/b/dg-q-7815c.appspot.com/o/Mimich_Blues.mp3?alt=media&token=1a6d329e-881a-441f-843e-4b274087ea10'
-        // scheme: 'asset',
-        // path: 'assets/Mimich_Blues.mp3',
+        'https://firebasestorage.googleapis.com/v0/b/dg-q-7815c.appspot.com/o/Deconfinado.mp3?alt=media&token=0062aefe-f67d-43b9-8466-d39950e88021'
+        //scheme: 'asset',
+        //path: 'assets/Deconfinado.mp3',
         ),
     tag: const AudioMetadata(
-        'assets/miscellanees.jpg',
-        'Miscellanées',
-        'Mimich Blues',
-        "https://denisgancelquartet.bandcamp.com/album/miscellan-es"),
+      'assets/puzzle.jpg',
+      'Puzzle',
+      'Deconfinado',
+      "https://denisgancelquartet.bandcamp.com/album/puzzle",
+    ),
   ),
   AudioSource.uri(
     Uri.parse(
@@ -29,15 +30,14 @@ final List<AudioSource> audioSource = [
   ),
   AudioSource.uri(
     Uri.parse(
-        'https://firebasestorage.googleapis.com/v0/b/dg-q-7815c.appspot.com/o/Deconfinado.mp3?alt=media&token=0062aefe-f67d-43b9-8466-d39950e88021'
-        //scheme: 'asset',
-        //path: 'assets/Deconfinado.mp3',
+        'https://firebasestorage.googleapis.com/v0/b/dg-q-7815c.appspot.com/o/Mimich_Blues.mp3?alt=media&token=1a6d329e-881a-441f-843e-4b274087ea10'
+        // scheme: 'asset',
+        // path: 'assets/Mimich_Blues.mp3',
         ),
     tag: const AudioMetadata(
-      'assets/puzzle.jpg',
-      'Puzzle',
-      'Deconfinado',
-      "https://denisgancelquartet.bandcamp.com/album/puzzle",
-    ),
-  ),
+        'assets/miscellanees.jpg',
+        'Miscellanées',
+        'Mimich Blues',
+        "https://denisgancelquartet.bandcamp.com/album/miscellan-es"),
+  )
 ];
